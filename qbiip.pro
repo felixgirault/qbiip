@@ -21,9 +21,9 @@ SOURCES += main.cpp \
     client.cpp \
     exception.cpp \
     note.cpp \
-    message.cpp \
     console.cpp \
-    speaker.cpp
+    speakeroutputter.cpp \
+    networkoutputter.cpp
 
 HEADERS += \
     biip.h \
@@ -31,10 +31,10 @@ HEADERS += \
     client.h \
     exception.h \
     note.h \
-    message.h \
     outputter.h \
     console.h \
-    speaker.h
+    speakeroutputter.h \
+    networkoutputter.h
 
 OTHER_FILES += \
     README.md

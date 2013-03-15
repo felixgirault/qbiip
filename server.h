@@ -3,7 +3,7 @@
 
 #include <QObject>
 
-#include "message.h"
+#include "note.h"
 
 class QUdpSocket;
 
@@ -33,7 +33,7 @@ class Server : public QObject {
 		 * @param message
 		 */
 
-		void broadcast( Message& message );
+		void broadcast( const Note& note );
 
 	private:
 

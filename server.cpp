@@ -10,8 +10,10 @@
 
 Server::Server( short port ) :
 	_port( port ),
-	_socket( new QUdpSocket( this ))
-{ }
+	_socket( new QUdpSocket( this )) {
+
+
+}
 
 
 
@@ -19,13 +21,15 @@ Server::Server( short port ) :
  *
  */
 
-void Server::broadcast( Message& message ) {
+void Server::broadcast( const Note& note ) {
 
-	QByteArray datagram = message.datagram( );
+	QByteArray datagram;
+	QDataStream stream( &datagram, QIODevice::WriteOnly );
+
+	stream << note;
 
 	_socket->writeDatagram(
-		datagram.data( ),
-		datagram.size( ),
+		datagram,
 		QHostAddress::Broadcast,
 		_port
 	);

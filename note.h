@@ -1,7 +1,7 @@
 #ifndef NOTE_H
 #define NOTE_H
 
-#include <QtGlobal>
+#include <QDataStream>
 
 
 
@@ -14,9 +14,15 @@ class Note {
 	public:
 
 		/**
-		 * @brief Note
-		 * @param frequency
-		 * @param duration
+		 *
+		 */
+
+		Note( );
+
+
+
+		/**
+		 *
 		 */
 
 		Note( float frequency, quint64 duration );
@@ -27,5 +33,14 @@ class Note {
 		quint64 duration;	//!<
 
 };
+
+
+
+/**
+ *
+ */
+
+QDataStream& operator<<( QDataStream& stream, const Note& note );
+QDataStream& operator>>( QDataStream& stream, Note& note );
 
 #endif // NOTE_H

@@ -1,5 +1,5 @@
-#ifndef SPEAKER_H
-#define SPEAKER_H
+#ifndef SPEAKER_OUTPUTTER_H
+#define SPEAKER_OUTPUTTER_H
 
 #include "outputter.h"
 
@@ -11,7 +11,7 @@
  *	The Speaker class.
  */
 
-class Speaker : public Outputter {
+class SpeakerOutputter : public Outputter {
 
 	Q_OBJECT
 
@@ -21,7 +21,7 @@ class Speaker : public Outputter {
 		 *
 		 */
 
-		Speaker( );
+		SpeakerOutputter( );
 
 
 
@@ -29,7 +29,7 @@ class Speaker : public Outputter {
 		 *
 		 */
 
-		~Speaker( );
+		~SpeakerOutputter( );
 
 	public slots:
 
@@ -47,4 +47,4 @@ class Speaker : public Outputter {
 
 };
 
-#endif // SPEAKER_H
+#endif // SPEAKER_OUTPUTTER_H

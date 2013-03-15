@@ -8,7 +8,7 @@
 #include <windows.h>
 #endif
 
-#include "speaker.h"
+#include "speakeroutputter.h"
 #include "exception.h"
 
 
@@ -17,7 +17,7 @@
  *
  */
 
-Speaker::Speaker( ) {
+SpeakerOutputter::SpeakerOutputter( ) {
 
 #ifdef Q_OS_UNIX
 	_console = open( "/dev/console", O_WRONLY );
@@ -36,7 +36,7 @@ Speaker::Speaker( ) {
  *
  */
 
-Speaker::~Speaker( ) {
+SpeakerOutputter::~SpeakerOutputter( ) {
 
 #ifdef Q_OS_UNIX
 	close( _console );
@@ -49,7 +49,7 @@ Speaker::~Speaker( ) {
  *
  */
 
-void Speaker::output( const Note& note ) {
+void SpeakerOutputter::output( const Note& note ) {
 
 #if defined( Q_OS_UNIX )
 	ioctl( _console, KIOCSOUND, ( int )( TICK / note.frequency ));
@@ -58,7 +58,6 @@ void Speaker::output( const Note& note ) {
 #elif defined( Q_OS_WIN )
 	Beep( note.frequency, note.duration );
 #else
-	Q_UNUSED( frequency );
-	Q_UNUSED( duration );
+	Q_UNUSED( note );
 #endif
 }

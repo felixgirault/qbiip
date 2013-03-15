@@ -21,14 +21,6 @@ class Outputter : public QObject {
 		 *
 		 */
 
-		Outputter( ) { }
-
-
-
-		/**
-		 *
-		 */
-
 		virtual ~Outputter( ) { }
 
 	public slots:

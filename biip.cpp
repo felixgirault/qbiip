@@ -26,12 +26,18 @@ Biip::Biip( ) {
 void Biip::wait( ) {
 
 	std::string line;
-	std::getline( std::cin, line);
+	QString command;
+	QStringList tokens;
 
-	QStringList tokens = QString( line.c_str( )).split( " ", QString::SkipEmptyParts );
-	QString command = tokens.takeFirst( );
+	do {
+		std::getline( std::cin, line );
 
-	if ( command == "note" ) {
+		tokens = QString( line.c_str( )).split( " ", QString::SkipEmptyParts );
+		command = tokens.takeFirst( );
 
-	}
+		if ( command == "note" ) {
+
+		}
+
+	} while ( command != "quit" );
 }

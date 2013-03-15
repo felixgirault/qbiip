@@ -1,6 +1,7 @@
 #include <QUdpSocket>
 
 #include "client.h"
+#include "note.h"
 
 
 
@@ -19,7 +20,7 @@ Client::Client( short port ) :
 	);
 }
 
-
+#include <QDebug>
 
 /**
  *
@@ -32,5 +33,11 @@ void Client::processPendingDatagrams( ) {
 		datagram.resize( _socket->pendingDatagramSize( ));
 
 		_socket->readDatagram( datagram.data( ), datagram.size( ));
+
+		QDataStream stream( datagram );
+		Note note;
+
+		stream >> note;
+		qDebug( ) << note.frequency;
 	}
 }

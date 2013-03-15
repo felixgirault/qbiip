@@ -1,7 +1,6 @@
 #ifndef EXCEPTION_H
 #define EXCEPTION_H
 
-#include <QException>
 #include <QString>
 
 
@@ -10,7 +9,7 @@
  *
  */
 
-class Exception : public QException {
+class Exception {
 
 	public:
 
