@@ -21,7 +21,7 @@ SOURCES += main.cpp \
     client.cpp \
     exception.cpp \
     note.cpp \
-    console.cpp \
+    consoleoutputter.cpp \
     speakeroutputter.cpp \
     networkoutputter.cpp
 
@@ -32,7 +32,7 @@ HEADERS += \
     exception.h \
     note.h \
     outputter.h \
-    console.h \
+    consoleoutputter.h \
     speakeroutputter.h \
     networkoutputter.h
 
