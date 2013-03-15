@@ -17,25 +17,10 @@ class SpeakerPlayer : public Player {
 
 	public:
 
-		/**
-		 *
-		 */
-
 		SpeakerPlayer( );
-
-
-
-		/**
-		 *
-		 */
-
 		~SpeakerPlayer( );
 
 	public slots:
-
-		/**
-		 *
-		 */
 
 		void play( const Note& note );
 

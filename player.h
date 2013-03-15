@@ -8,7 +8,7 @@
 
 
 /**
- *
+ *	The Player class.
  */
 
 class Player : public QObject {
@@ -17,17 +17,9 @@ class Player : public QObject {
 
 	public:
 
-		/**
-		 *
-		 */
-
 		virtual ~Player( ) { }
 
 	public slots:
-
-		/**
-		 *
-		 */
 
 		virtual void play( const Note& note ) = 0;
 

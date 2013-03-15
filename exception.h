@@ -6,7 +6,7 @@
 
 
 /**
- *
+ *	The Exception class.
  */
 
 class Exception {

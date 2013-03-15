@@ -24,7 +24,7 @@ SpeakerPlayer::SpeakerPlayer( ) {
 
 	if ( _console == -1 ) {
 		throw new Exception(
-			"Unable to use the speaker, try to run biip as root."
+			"Unable to use the speaker, please run qbiip as root."
 		);
 	}
 #endif

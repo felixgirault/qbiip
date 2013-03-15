@@ -7,9 +7,9 @@
 /**
  *	Entry point of the application.
  *
- *	@param argc
- *	@param argv
- *	@return
+ *	@param argc Argument count
+ *	@param argv Arguments
+ *	@return Execution status
  */
 
 int main( int argc, char* argv[ ]) {
@@ -17,7 +17,7 @@ int main( int argc, char* argv[ ]) {
 	QCoreApplication app( argc, argv );
 
 	Biip biip;
-	biip.wait( );
+	biip.exec( );
 	
 	return app.exec( );
 }

@@ -13,18 +13,7 @@ class Note {
 
 	public:
 
-		/**
-		 *
-		 */
-
 		Note( );
-
-
-
-		/**
-		 *
-		 */
-
 		Note( float frequency, quint64 duration );
 
 	public:

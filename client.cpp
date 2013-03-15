@@ -1,7 +1,6 @@
 #include <QUdpSocket>
 
 #include "client.h"
-#include "note.h"
 
 
 
@@ -20,7 +19,7 @@ Client::Client( short port ) :
 	);
 }
 
-#include <QDebug>
+
 
 /**
  *
@@ -38,6 +37,6 @@ void Client::processPendingDatagrams( ) {
 		Note note;
 
 		stream >> note;
-		qDebug( ) << note.frequency;
+		emit noteReceived( note );
 	}
 }

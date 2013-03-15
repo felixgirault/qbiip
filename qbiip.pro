@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     note.cpp \
     consoleplayer.cpp \
     networkplayer.cpp \
-    speakerplayer.cpp
+    speakerplayer.cpp \
+    score.cpp
 
 HEADERS += \
     biip.h \
@@ -34,7 +35,8 @@ HEADERS += \
     consoleplayer.h \
     networkplayer.h \
     speakerplayer.h \
-    player.h
+    player.h \
+    score.h
 
 OTHER_FILES += \
     README.md

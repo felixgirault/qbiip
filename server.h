@@ -19,19 +19,7 @@ class Server : public QObject {
 
 	public:
 
-		/**
-		 * @brief Server
-		 * @param port
-		 */
-
 		Server( short port = 8119 );
-
-
-
-		/**
-		 * @brief broadcast
-		 * @param message
-		 */
 
 		void broadcast( const Note& note );
 

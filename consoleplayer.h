@@ -13,10 +13,6 @@ class ConsolePlayer : public Player {
 
 	public slots:
 
-		/**
-		 *
-		 */
-
 		void play( const Note& note );
 
 };

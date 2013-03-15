@@ -3,6 +3,8 @@
 
 #include <QObject>
 
+#include "note.h"
+
 class QUdpSocket;
 
 
@@ -17,18 +19,13 @@ class Client : public QObject {
 
 	public:
 
-		/**
-		 * @brief Client
-		 * @param port
-		 */
-
 		Client( short port = 8119 );
 
-	private slots:
+	signals:
 
-		/**
-		 * @brief processPendingDatagrams
-		 */
+		void noteReceived( const Note& note );
+
+	private slots:
 
 		void processPendingDatagrams( );
 

@@ -1,4 +1,4 @@
-#include <iostream>
+#include <QDebug>
 
 #include "consoleplayer.h"
 
@@ -10,5 +10,5 @@
 
 void ConsolePlayer::play( const Note& note ) {
 
-	std::cout << note.frequency << ":" << note.duration;
+	qDebug( ) << note.frequency << ":" << note.duration;
 }

@@ -23,7 +23,7 @@ Biip::Biip( ) {
  *
  */
 
-void Biip::wait( ) {
+void Biip::exec( ) {
 
 	std::string line;
 	QString command;
@@ -41,3 +41,4 @@ void Biip::wait( ) {
 
 	} while ( command != "quit" );
 }
+

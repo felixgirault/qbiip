@@ -15,17 +15,9 @@ class NetworkPlayer : public Player
 {
 	public:
 
-		/**
-		 *
-		 */
-
 		NetworkPlayer( Server* server );
 
 	public slots:
-
-		/**
-		 *
-		 */
 
 		void play( const Note& note );
 
