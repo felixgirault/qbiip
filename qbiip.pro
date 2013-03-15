@@ -21,9 +21,9 @@ SOURCES += main.cpp \
     client.cpp \
     exception.cpp \
     note.cpp \
-    consoleoutputter.cpp \
-    speakeroutputter.cpp \
-    networkoutputter.cpp
+    consoleplayer.cpp \
+    networkplayer.cpp \
+    speakerplayer.cpp
 
 HEADERS += \
     biip.h \
@@ -31,10 +31,10 @@ HEADERS += \
     client.h \
     exception.h \
     note.h \
-    outputter.h \
-    consoleoutputter.h \
-    speakeroutputter.h \
-    networkoutputter.h
+    consoleplayer.h \
+    networkplayer.h \
+    speakerplayer.h \
+    player.h
 
 OTHER_FILES += \
     README.md

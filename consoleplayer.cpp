@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "consoleoutputter.h"
+#include "consoleplayer.h"
 
 
 
@@ -8,7 +8,7 @@
  *
  */
 
-void ConsoleOutputter::output( const Note& note ) {
+void ConsolePlayer::play( const Note& note ) {
 
 	std::cout << note.frequency << ":" << note.duration;
 }
