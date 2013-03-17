@@ -17,26 +17,36 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     biip.cpp \
-    server.cpp \
-    client.cpp \
     exception.cpp \
     note.cpp \
-    consoleplayer.cpp \
-    networkplayer.cpp \
-    speakerplayer.cpp \
-    score.cpp
+    frequencies.cpp \
+    configurable.cpp \
+    consoleoutput.cpp \
+    consoleinput.cpp \
+    networkoutput.cpp \
+    networkinput.cpp \
+    scoreinput.cpp \
+    speakeroutput.cpp \
+    input.cpp \
+    output.cpp
 
 HEADERS += \
     biip.h \
-    server.h \
-    client.h \
     exception.h \
     note.h \
-    consoleplayer.h \
-    networkplayer.h \
-    speakerplayer.h \
-    player.h \
-    score.h
+    state.h \
+    frequencies.h \
+    factory.h \
+    configurable.h \
+    consoleoutput.h \
+    consoleinput.h \
+    networkoutput.h \
+    networkinput.h \
+    scoreinput.h \
+    speakeroutput.h \
+    input.h \
+    output.h
 
 OTHER_FILES += \
-    README.md
+    README.md \
+    scores/tron.json

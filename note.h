@@ -2,6 +2,8 @@
 #define NOTE_H
 
 #include <QDataStream>
+#include <QDebug>
+#include <ostream>
 
 
 
@@ -14,10 +16,11 @@ class Note {
 	public:
 
 		Note( );
-		Note( float frequency, quint64 duration );
+		Note( const QString& track, float frequency, quint64 duration );
 
 	public:
 
+		QString track;	//!<
 		float frequency;	//!<
 		quint64 duration;	//!<
 
@@ -31,5 +34,21 @@ class Note {
 
 QDataStream& operator<<( QDataStream& stream, const Note& note );
 QDataStream& operator>>( QDataStream& stream, Note& note );
+
+
+
+/**
+ *
+ */
+
+QDebug operator<<( QDebug stream, const Note& note );
+
+
+
+/**
+ *
+ */
+
+std::ostream& operator<<( std::ostream& stream, const Note& note );
 
 #endif // NOTE_H
