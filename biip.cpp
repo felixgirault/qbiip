@@ -84,10 +84,7 @@ void Biip::exec( ) {
 		return;
 	}
 
-	connect(
-		_input, SIGNAL( played( const Note& )),
-		_output, SLOT( play( const Note& ))
-	);
+	connect( _input, &Input::played, _output, &Output::play );
 
 	_input->play( );
 }

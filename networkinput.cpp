@@ -29,8 +29,8 @@ NetworkInput::NetworkInput( QObject* parent ) :
 	_socket( new QUdpSocket( this )) {
 
 	connect(
-		_socket, SIGNAL( readyRead( )),
-		this, SLOT( processPendingDatagrams( ))
+		_socket, &QUdpSocket::readyRead,
+		this, &NetworkInput::processPendingDatagrams
 	);
 }
 

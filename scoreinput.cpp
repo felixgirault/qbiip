@@ -35,10 +35,7 @@ ScoreInput::ScoreInput( QObject* parent ) :
 	_current( 0 ),
 	_unit( 0 ) {
 
-	connect(
-		_timer, SIGNAL( timeout( )),
-		this, SLOT( check( ))
-	);
+	connect( _timer, &QTimer::timeout, this, &ScoreInput::check );
 }
 
 
