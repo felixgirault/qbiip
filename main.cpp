@@ -1,6 +1,6 @@
 #include <QCoreApplication>
 
-#include "biip.h"
+#include "qbiip.h"
 
 
 
@@ -16,8 +16,8 @@ int main( int argc, char* argv[ ]) {
 
 	QCoreApplication app( argc, argv );
 
-	Biip biip;
+	QBiip biip( app.arguments( ));
 	biip.exec( );
-	
+
 	return app.exec( );
 }
