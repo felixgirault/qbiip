@@ -28,7 +28,7 @@ SOURCES += main.cpp \
     speakeroutput.cpp \
     input.cpp \
     output.cpp \
-    qbiip.cpp
+    application.cpp
 
 HEADERS += \
     exception.h \
@@ -45,7 +45,7 @@ HEADERS += \
     speakeroutput.h \
     input.h \
     output.h \
-    qbiip.h
+    application.h
 
 OTHER_FILES += \
     README.md \

@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <string>
 
-#include "qbiip.h"
+#include "application.h"
 #include "input.h"
 #include "output.h"
 #include "exception.h"
@@ -16,7 +16,7 @@
  *
  */
 
-QBiip::QBiip( int argc, char* argv[ ]) :
+Application::Application( int argc, char* argv[ ]) :
 	QCoreApplication( argc, argv ) {
 
 	parseArguments( );
@@ -28,7 +28,7 @@ QBiip::QBiip( int argc, char* argv[ ]) :
  *
  */
 
-int QBiip::exec( ) {
+int Application::exec( ) {
 
 	Informations inputInfos = Factory< Input >::informations( );
 	Informations outputInfos = Factory< Output >::informations( );
@@ -94,7 +94,7 @@ int QBiip::exec( ) {
  *
  */
 
-void QBiip::parseArguments( ) {
+void Application::parseArguments( ) {
 
 	QString currentSwitch;
 
@@ -113,7 +113,7 @@ void QBiip::parseArguments( ) {
  *
  */
 
-void QBiip::printInformations( const QString& type, const Informations& infos ) const {
+void Application::printInformations( const QString& type, const Informations& infos ) const {
 
 	std::cout << "Available " << type.toStdString( ) << ":" << std::endl;
 

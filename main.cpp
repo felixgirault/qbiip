@@ -1,6 +1,4 @@
-#include <QCoreApplication>
-
-#include "qbiip.h"
+#include "application.h"
 
 
 
@@ -14,6 +12,6 @@
 
 int main( int argc, char* argv[ ]) {
 
-	QBiip qBiip( argc, argv );
-	return qBiip.exec( );
+	Application app( argc, argv );
+	return app.exec( );
 }

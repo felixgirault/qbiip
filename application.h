@@ -16,13 +16,13 @@ class Output;
  *	The QBiip class.
  */
 
-class QBiip : public QCoreApplication {
+class Application : public QCoreApplication {
 
 	Q_OBJECT
 
 	public:
 
-		QBiip( int argc, char* argv[ ]);
+		Application( int argc, char* argv[ ]);
 
 	public slots:
 
