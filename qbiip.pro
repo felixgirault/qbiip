@@ -20,12 +20,12 @@ SOURCES += main.cpp \
     note.cpp \
     frequencies.cpp \
     configurable.cpp \
-    consoleoutput.cpp \
-    consoleinput.cpp \
-    networkoutput.cpp \
-    networkinput.cpp \
-    scoreinput.cpp \
-    speakeroutput.cpp \
+    output/consoleoutput.cpp \
+    input/consoleinput.cpp \
+    output/networkoutput.cpp \
+    input/networkinput.cpp \
+    input/scoreinput.cpp \
+    output/speakeroutput.cpp \
     input.cpp \
     output.cpp \
     application.cpp \
@@ -38,12 +38,12 @@ HEADERS += \
     frequencies.h \
     factory.h \
     configurable.h \
-    consoleoutput.h \
-    consoleinput.h \
-    networkoutput.h \
-    networkinput.h \
-    scoreinput.h \
-    speakeroutput.h \
+    output/consoleoutput.h \
+    input/consoleinput.h \
+    output/networkoutput.h \
+    input/networkinput.h \
+    input/scoreinput.h \
+    output/speakeroutput.h \
     input.h \
     output.h \
     application.h \

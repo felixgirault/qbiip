@@ -7,8 +7,8 @@
 #include <iostream>
 
 #include "scoreinput.h"
-#include "exception.h"
-#include "factory.h"
+#include "../exception.h"
+#include "../factory.h"
 
 
 

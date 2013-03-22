@@ -1,8 +1,8 @@
 #include <QUdpSocket>
 
 #include "networkinput.h"
-#include "exception.h"
-#include "factory.h"
+#include "../exception.h"
+#include "../factory.h"
 
 
 

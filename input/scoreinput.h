@@ -4,8 +4,8 @@
 #include <QVector>
 #include <QList>
 
-#include "input.h"
-#include "frequencies.h"
+#include "../input.h"
+#include "../frequencies.h"
 
 class QTimer;
 

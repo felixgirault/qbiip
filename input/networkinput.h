@@ -3,7 +3,7 @@
 
 #define NETWORK_INPUT_DEFAULT_PORT 8119
 
-#include "input.h"
+#include "../input.h"
 
 class QUdpSocket;
 

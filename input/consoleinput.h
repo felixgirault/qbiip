@@ -1,8 +1,8 @@
 #ifndef CONSOLE_INPUT_H
 #define CONSOLE_INPUT_H
 
-#include "input.h"
-#include "frequencies.h"
+#include "../input.h"
+#include "../frequencies.h"
 
 
 

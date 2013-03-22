@@ -1,8 +1,8 @@
 #include <iostream>
 
 #include "consoleinput.h"
-#include "exception.h"
-#include "factory.h"
+#include "../exception.h"
+#include "../factory.h"
 
 
 
