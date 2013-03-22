@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     speakeroutput.cpp \
     input.cpp \
     output.cpp \
-    application.cpp
+    application.cpp \
+    streams.cpp
 
 HEADERS += \
     exception.h \
@@ -45,7 +46,8 @@ HEADERS += \
     speakeroutput.h \
     input.h \
     output.h \
-    application.h
+    application.h \
+    streams.h
 
 OTHER_FILES += \
     README.md \
