@@ -1,6 +1,7 @@
 #ifndef BIIP_H
 #define BIIP_H
 
+#include <QCoreApplication>
 #include <QObject>
 
 #include "factory.h"
@@ -14,13 +15,17 @@ class Output;
  *	The Biip class.
  */
 
-class Biip : public QObject {
+class Biip : public QCoreApplication {
+
+	Q_OBJECT
 
 	public:
 
-		Biip( QObject* parent = 0 );
+		Biip( int argc, char* argv[ ]);
 
-		void exec( );
+	public slots:
+
+		int exec( );
 
 	private:
 

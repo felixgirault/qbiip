@@ -1,4 +1,3 @@
-#include <QCoreApplication>
 #include <QString>
 #include <QStringList>
 
@@ -17,8 +16,8 @@
  *
  */
 
-Biip::Biip( QObject* parent ) :
-	QObject( parent ) {
+Biip::Biip( int argc, char* argv[ ]) :
+	QCoreApplication( argc, argv ) {
 
 }
 
@@ -28,7 +27,7 @@ Biip::Biip( QObject* parent ) :
  *
  */
 
-void Biip::exec( ) {
+int Biip::exec( ) {
 
 	QVariantMap options = parseArguments( );
 	Informations inputInfos = Factory< Input >::informations( );
@@ -37,13 +36,13 @@ void Biip::exec( ) {
 	if ( options.contains( "help" )) {
 		printInformations( "inputs", inputInfos );
 		printInformations( "outputs", outputInfos );
-		return;
+		return 1;
 	}
 
 	if ( !options.contains( "input" )) {
 		std::cerr << "Please choose an input (-input option)." << std::endl;
 		printInformations( "inputs", inputInfos );
-		return;
+		return 1;
 	}
 
 	QString inputName = options.value( "input" ).toString( );
@@ -52,20 +51,20 @@ void Biip::exec( ) {
 	if ( !_input ) {
 		std::cerr << "Please choose a valid input." << std::endl;
 		printInformations( "inputs", inputInfos );
-		return;
+		return 1;
 	}
 
 	try {
 		_input->configure( options );
 	} catch ( const Exception& e ) {
 		std::cerr << e.message( ).toStdString( ) << std::endl;
-		return;
+		return 1;
 	}
 
 	if ( !options.contains( "output" )) {
 		std::cerr << "Please choose an output (-output option)." << std::endl;
 		printInformations( "outputs", outputInfos );
-		return;
+		return 1;
 	}
 
 	QString outputName = options.value( "output" ).toString( );
@@ -74,14 +73,14 @@ void Biip::exec( ) {
 	if ( !_output ) {
 		std::cerr << "Please choose a valid output." << std::endl;
 		printInformations( "outputs", outputInfos );
-		return;
+		return 1;
 	}
 
 	try {
 		_output->configure( options );
 	} catch ( const Exception& e ) {
 		std::cerr << e.message( ).toStdString( ) << std::endl;
-		return;
+		return 1;
 	}
 
 	connect( _input, &Input::played, _output, &Output::play );

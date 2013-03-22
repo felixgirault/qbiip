@@ -14,10 +14,6 @@
 
 int main( int argc, char* argv[ ]) {
 
-	QCoreApplication app( argc, argv );
-
-	Biip biip;
-	biip.exec( );
-	
-	return app.exec( );
+	Biip biip( argc, argv );
+	return biip.exec( );
 }
