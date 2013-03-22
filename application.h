@@ -33,6 +33,9 @@ class Application : public QCoreApplication {
 		void parseArguments( );
 		void printInformations( const QString& type, const Informations& infos ) const;
 
+		void setupInput( );
+		void setupOutput( );
+
 	private:
 
 		QVariantMap _options;

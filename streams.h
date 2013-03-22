@@ -1,10 +1,16 @@
 #ifndef STREAMS_H
 #define STREAMS_H
 
-class streams
-{
-	public:
-		streams();
-};
+#include <iostream>
+#include <QString>
+
+
+
+/**
+ *
+ */
+
+std::ostream& operator<<( std::ostream& stream, const QString& string );
+std::istream& operator>>( std::istream& stream, QString& string );
 
 #endif // STREAMS_H
