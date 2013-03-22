@@ -16,7 +16,6 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp \
-    biip.cpp \
     exception.cpp \
     note.cpp \
     frequencies.cpp \
@@ -28,10 +27,10 @@ SOURCES += main.cpp \
     scoreinput.cpp \
     speakeroutput.cpp \
     input.cpp \
-    output.cpp
+    output.cpp \
+    qbiip.cpp
 
 HEADERS += \
-    biip.h \
     exception.h \
     note.h \
     state.h \
@@ -45,7 +44,8 @@ HEADERS += \
     scoreinput.h \
     speakeroutput.h \
     input.h \
-    output.h
+    output.h \
+    qbiip.h
 
 OTHER_FILES += \
     README.md \

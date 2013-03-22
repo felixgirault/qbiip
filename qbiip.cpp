@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <string>
 
-#include "biip.h"
+#include "qbiip.h"
 #include "input.h"
 #include "output.h"
 #include "exception.h"
@@ -16,9 +16,10 @@
  *
  */
 
-Biip::Biip( int argc, char* argv[ ]) :
+QBiip::QBiip( int argc, char* argv[ ]) :
 	QCoreApplication( argc, argv ) {
 
+	parseArguments( );
 }
 
 
@@ -27,25 +28,24 @@ Biip::Biip( int argc, char* argv[ ]) :
  *
  */
 
-int Biip::exec( ) {
+int QBiip::exec( ) {
 
-	QVariantMap options = parseArguments( );
 	Informations inputInfos = Factory< Input >::informations( );
 	Informations outputInfos = Factory< Output >::informations( );
 
-	if ( options.contains( "help" )) {
+	if ( _options.contains( "help" )) {
 		printInformations( "inputs", inputInfos );
 		printInformations( "outputs", outputInfos );
 		return 1;
 	}
 
-	if ( !options.contains( "input" )) {
+	if ( !_options.contains( "input" )) {
 		std::cerr << "Please choose an input (-input option)." << std::endl;
 		printInformations( "inputs", inputInfos );
 		return 1;
 	}
 
-	QString inputName = options.value( "input" ).toString( );
+	QString inputName = _options.value( "input" ).toString( );
 	_input = Factory< Input >::create( inputName );
 
 	if ( !_input ) {
@@ -55,19 +55,19 @@ int Biip::exec( ) {
 	}
 
 	try {
-		_input->configure( options );
+		_input->configure( _options );
 	} catch ( const Exception& e ) {
 		std::cerr << e.message( ).toStdString( ) << std::endl;
 		return 1;
 	}
 
-	if ( !options.contains( "output" )) {
+	if ( !_options.contains( "output" )) {
 		std::cerr << "Please choose an output (-output option)." << std::endl;
 		printInformations( "outputs", outputInfos );
 		return 1;
 	}
 
-	QString outputName = options.value( "output" ).toString( );
+	QString outputName = _options.value( "output" ).toString( );
 	_output = Factory< Output >::create( outputName );
 
 	if ( !_output ) {
@@ -77,7 +77,7 @@ int Biip::exec( ) {
 	}
 
 	try {
-		_output->configure( options );
+		_output->configure( _options );
 	} catch ( const Exception& e ) {
 		std::cerr << e.message( ).toStdString( ) << std::endl;
 		return 1;
@@ -94,21 +94,17 @@ int Biip::exec( ) {
  *
  */
 
-QVariantMap Biip::parseArguments( ) const {
+void QBiip::parseArguments( ) {
 
-	QStringList arguments = qApp->arguments( );
 	QString currentSwitch;
-	QVariantMap parsed;
 
-	foreach( const QString& argument, arguments ) {
+	foreach( const QString& argument, arguments( )) {
 		if ( argument.startsWith( "-" )) {
 			currentSwitch = argument.right( argument.size( ) - 1 );
 		} else if ( !currentSwitch.isEmpty( )) {
-			parsed.insert( currentSwitch, argument );
+			_options.insert( currentSwitch, argument );
 		}
 	}
-
-	return parsed;
 }
 
 
@@ -117,7 +113,7 @@ QVariantMap Biip::parseArguments( ) const {
  *
  */
 
-void Biip::printInformations( const QString& type, const Informations& infos ) const {
+void QBiip::printInformations( const QString& type, const Informations& infos ) const {
 
 	std::cout << "Available " << type.toStdString( ) << ":" << std::endl;
 

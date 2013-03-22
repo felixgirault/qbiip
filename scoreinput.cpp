@@ -31,9 +31,9 @@ REGISTER_PRODUCT(
 
 ScoreInput::ScoreInput( QObject* parent ) :
 	Input( parent ),
-	_timer( new QTimer( this )),
+	_unit( 0 ),
 	_current( 0 ),
-	_unit( 0 ) {
+	_timer( new QTimer( this )) {
 
 	connect( _timer, &QTimer::timeout, this, &ScoreInput::check );
 }
@@ -41,7 +41,7 @@ ScoreInput::ScoreInput( QObject* parent ) :
 
 
 /**
- *
+ *	@todo Add a -repeat [times] option.
  */
 
 void ScoreInput::configure( const QVariantMap& options ) {
