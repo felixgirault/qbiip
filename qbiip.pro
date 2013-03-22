@@ -51,4 +51,6 @@ HEADERS += \
 
 OTHER_FILES += \
     README.md \
-    scores/tron.json
+    scores/mario.json \
+    scores/tron.json \
+    scores/win.json
