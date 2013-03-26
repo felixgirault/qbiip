@@ -34,7 +34,7 @@ int Application::exec( ) {
 	if ( _options.contains( "help" )) {
 		printInformations( "inputs", Factory< Input >::informations( ));
 		printInformations( "outputs", Factory< Output >::informations( ));
-		return 1;
+		return 0;
 	}
 
 	try {
