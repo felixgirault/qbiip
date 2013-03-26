@@ -41,6 +41,26 @@ ScoreInput::ScoreInput( QObject* parent ) :
 
 
 /**
+ *
+ */
+
+ScoreInput::OptionList ScoreInput::options( ) const {
+
+	OptionList options;
+	options.append(
+		Option(
+			"score",
+			"The path to the score to play.",
+			QMetaType::QString
+		)
+	);
+
+	return options;
+}
+
+
+
+/**
  *	@todo Add a -repeat [times] option.
  */
 

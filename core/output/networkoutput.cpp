@@ -35,6 +35,26 @@ NetworkOutput::NetworkOutput( QObject* parent ) :
  *
  */
 
+NetworkOutput::OptionList NetworkOutput::options( ) const {
+
+	OptionList options;
+	options.append(
+		Option(
+			"port",
+			"The port on which to listen to.",
+			QMetaType::Int
+		)
+	);
+
+	return options;
+}
+
+
+
+/**
+ *
+ */
+
 void NetworkOutput::configure( const QVariantMap& options ) {
 
 	bool ok = false;

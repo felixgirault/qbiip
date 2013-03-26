@@ -22,7 +22,9 @@ class ScoreInput : public Input {
 
 		ScoreInput( QObject* parent = 0 );
 
+		OptionList options( ) const;
 		void configure( const QVariantMap& options );
+
 		void load( const QString& fileName );
 
 		void play( );

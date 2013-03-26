@@ -40,6 +40,33 @@ NetworkInput::NetworkInput( QObject* parent ) :
  *
  */
 
+NetworkInput::OptionList NetworkInput::options( ) const {
+
+	OptionList options;
+	options.append(
+		Option(
+			"port",
+			"The port to listen to.",
+			QMetaType::Int
+		)
+	);
+	options.append(
+		Option(
+			"track",
+			"The track to listen to.",
+			QMetaType::QString
+		)
+	);
+
+	return options;
+}
+
+
+
+/**
+ *
+ */
+
 void NetworkInput::configure( const QVariantMap& options ) {
 
 	bool ok = false;

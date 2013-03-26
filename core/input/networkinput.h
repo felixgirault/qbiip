@@ -21,6 +21,7 @@ class NetworkInput : public Input {
 
 		NetworkInput( QObject* parent = 0 );
 
+		OptionList options( ) const;
 		void configure( const QVariantMap& options );
 
 		void play( );
