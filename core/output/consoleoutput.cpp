@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "consoleoutput.h"
-#include "factory.h"
+#include "../factory.h"
 
 
 

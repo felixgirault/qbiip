@@ -1,7 +1,7 @@
 #ifndef CONSOLE_OUTPUT_H
 #define CONSOLE_OUTPUT_H
 
-#include "output.h"
+#include "../output.h"
 
 
 

@@ -3,7 +3,7 @@
 
 #define NETWORK_OUTPUT_DEFAULT_PORT 8119
 
-#include "output.h"
+#include "../output.h"
 
 class QUdpSocket;
 

@@ -5,7 +5,7 @@
 #include <QStringList>
 #include <QVariantMap>
 
-#include "factory.h"
+#include "../core/factory.h"
 
 class Input;
 class Output;

@@ -3,7 +3,7 @@
 
 #define TICK 1193180
 
-#include "output.h"
+#include "../output.h"
 
 
 

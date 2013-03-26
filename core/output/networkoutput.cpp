@@ -1,7 +1,7 @@
 #include <QUdpSocket>
 
 #include "networkoutput.h"
-#include "factory.h"
+#include "../factory.h"
 
 
 

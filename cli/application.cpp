@@ -6,10 +6,10 @@
 #include <string>
 
 #include "application.h"
-#include "input.h"
-#include "output.h"
-#include "streams.h"
-#include "exception.h"
+#include "../core/input.h"
+#include "../core/output.h"
+#include "../core/streams.h"
+#include "../core/exception.h"
 
 
 

@@ -9,8 +9,8 @@
 #endif
 
 #include "speakeroutput.h"
-#include "exception.h"
-#include "factory.h"
+#include "../exception.h"
+#include "../factory.h"
 
 
 
