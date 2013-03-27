@@ -31,10 +31,12 @@ class Application : public QCoreApplication {
 	private:
 
 		void parseArguments( );
-		void printInformations( const QString& type, const Informations& infos ) const;
 
-		void setupInput( );
-		void setupOutput( );
+		template< class Type >
+		void printInformations( const QString& typeName ) const;
+
+		template< class Type >
+		Type* create( const QString& typeName ) const;
 
 	private:
 

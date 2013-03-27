@@ -32,20 +32,24 @@ Application::Application( int argc, char* argv[ ]) :
 int Application::exec( ) {
 
 	if ( _options.contains( "help" )) {
-		printInformations( "inputs", Factory< Input >::informations( ));
-		printInformations( "outputs", Factory< Output >::informations( ));
+		printInformations< Input >( "inputs" );
+		printInformations< Output >( "outputs" );
 		return 0;
 	}
 
 	try {
-		setupInput( );
-		setupOutput( );
+		_input = create< Input >( "input" );
+		_output = create< Output >( "output" );
 	} catch ( const Exception& e ) {
 		std::cerr << e.message( ) << std::endl;
 		return 1;
 	}
 
-	connect( _input, &Input::played, _output, &Output::play );
+	connect(
+		_input, &Input::played,
+		_output, &Output::play
+	);
+
 	_input->play( );
 
 	return QCoreApplication::exec( );
@@ -76,14 +80,31 @@ void Application::parseArguments( ) {
  *
  */
 
-void Application::printInformations( const QString& type, const Informations& infos ) const {
+template< class Type >
+void Application::printInformations( const QString& typeName ) const {
 
-	QMapIterator< QString, QString > it( infos );
-	std::cout << "Available " << type.toStdString( ) << ":" << std::endl;
+	Configurable* configurable = 0;
+	Informations informations = Factory< Type >::informations( );
+	QMapIterator< QString, QString > it( informations );
+
+	std::cout << "Available " << typeName << ":" << std::endl;
 
 	while ( it.hasNext( )) {
 		it.next( );
-		std::cout << " " << it.key( ) << " - " << it.value( ) << std::endl;
+
+		try {
+			configurable = Factory< Type >::create( it.key( ));
+		} catch ( const Exception& e ) {
+			Q_UNUSED( e );
+		}
+
+		if ( configurable ) {
+			std::cout << "- " << it.key( ) << ": " << it.value( ) << std::endl;
+
+			foreach ( const Configurable::Option& option, configurable->options( )) {
+				std::cout << "\t- " << option.name << ": " << option.description << std::endl;
+			}
+		}
 	}
 }
 
@@ -93,40 +114,24 @@ void Application::printInformations( const QString& type, const Informations& in
  *
  */
 
-void Application::setupInput( ) {
+template< class Type >
+Type* Application::create( const QString& typeName ) const {
 
-	if ( !_options.contains( "input" )) {
-		throw Exception( "Please choose an input device (-input option)." );
+	if ( !_options.contains( typeName )) {
+		throw Exception(
+			QString( "Please choose an %1 device (-%1 option)." ).arg( typeName )
+		);
 	}
 
-	QString inputName = _options.value( "input" ).toString( );
-	_input = Factory< Input >::create( inputName );
+	QString inputName = _options.value( typeName ).toString( );
+	Type* object = Factory< Type >::create( inputName );
 
-	if ( !_input ) {
-		throw Exception( "Please choose a valid input device (-help for a list)." );
+	if ( !object ) {
+		throw Exception(
+			QString( "Please choose a valid %1 device (-help for a list)." ).arg( typeName )
+		);
 	}
 
-	_input->configure( _options );
-}
-
-
-
-/**
- *
- */
-
-void Application::setupOutput( ) {
-
-	if ( !_options.contains( "output" )) {
-		throw Exception( "Please choose an output device (-output option)." );
-	}
-
-	QString outputName = _options.value( "output" ).toString( );
-	_output = Factory< Output >::create( outputName );
-
-	if ( !_output ) {
-		throw Exception( "Please choose a valid output device (-help for a list)." );
-	}
-
-	_output->configure( _options );
+	object->configure( _options );
+	return object;
 }
