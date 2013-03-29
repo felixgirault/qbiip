@@ -42,7 +42,7 @@ NetworkOutput::OptionList NetworkOutput::options( ) const {
 		Option(
 			"port",
 			"The port on which to listen to.",
-			QMetaType::Int
+			Option::Integer
 		)
 	);
 

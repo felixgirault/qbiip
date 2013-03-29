@@ -9,7 +9,7 @@
 Configurable::Option::Option(
 	const QString& name,
 	const QString& description,
-	int type
+	Type type
 ) :
 	name( name ),
 	description( description ),

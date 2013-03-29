@@ -5,6 +5,7 @@
 #include <QMap>
 
 typedef QMap< QString, QString > Informations;
+typedef QMapIterator< QString, QString > InformationsIterator;
 
 
 

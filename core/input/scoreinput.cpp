@@ -51,7 +51,7 @@ ScoreInput::OptionList ScoreInput::options( ) const {
 		Option(
 			"score",
 			"The path to the score to play.",
-			QMetaType::QString
+			Option::String
 		)
 	);
 
@@ -92,7 +92,10 @@ void ScoreInput::load( const QString& fileName ) {
 
 	if ( !file.open( QFile::ReadOnly | QFile::Text )) {
 		throw Exception(
-			QString( "Unable to open '%1' : %2" ).arg( fileName, file.errorString( ))
+			QString( "Unable to open '%1' : %2" ).arg(
+				fileName,
+				file.errorString( )
+			)
 		);
 	}
 

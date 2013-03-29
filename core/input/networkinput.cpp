@@ -47,14 +47,14 @@ NetworkInput::OptionList NetworkInput::options( ) const {
 		Option(
 			"port",
 			"The port to listen to.",
-			QMetaType::Int
+			Option::Integer
 		)
 	);
 	options.append(
 		Option(
 			"track",
 			"The track to listen to.",
-			QMetaType::QString
+			Option::String
 		)
 	);
 

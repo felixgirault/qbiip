@@ -20,17 +20,25 @@ class Configurable : public QObject {
 
 			public:
 
+				enum Type {
+					Integer,
+					String,
+					Path
+				};
+
+			public:
+
 				Option(
 					const QString& name,
 					const QString& description,
-					int type
+					Type type
 				);
 
 			public:
 
 				QString name;
 				QString description;
-				int type;
+				Type type;
 
 		};
 
