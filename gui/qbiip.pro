@@ -27,7 +27,8 @@ SOURCES += main.cpp \
     ../core/input.cpp \
     ../core/output.cpp \
     ../core/streams.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    configurator.cpp
 
 HEADERS += \
     ../core/exception.h \
@@ -45,5 +46,6 @@ HEADERS += \
     ../core/input.h \
     ../core/output.h \
     ../core/streams.h \
-    mainwindow.h
+    mainwindow.h \
+    configurator.h
 

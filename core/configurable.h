@@ -2,7 +2,6 @@
 #define CONFIGURABLE_H
 
 #include <QObject>
-#include <QMap>
 
 
 
@@ -50,7 +49,8 @@ class Configurable : public QObject {
 		virtual ~Configurable( );
 
 		virtual OptionList options( ) const;
-		virtual void configure( const QVariantMap& options );
+		virtual void configure( const QString& name, const QVariant& value );
+		void configure( const QVariantMap& options );
 
 };
 

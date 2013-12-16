@@ -64,17 +64,19 @@ ScoreInput::OptionList ScoreInput::options( ) const {
  *	@todo Add a -repeat [times] option.
  */
 
-void ScoreInput::configure( const QVariantMap& options ) {
+void ScoreInput::configure( const QString& name, const QVariant& value ) {
 
-	QString fileName = options.value( "score" ).toString( );
+	if ( name == "score" ) {
+		QString fileName = value.toString( );
 
-	if ( fileName.isEmpty( )) {
-		throw Exception(
-			"Please provide a score (-score fileName)."
-		);
+		if ( fileName.isEmpty( )) {
+			throw Exception(
+				"Please provide a score (-score fileName)."
+			);
+		}
+
+		load( fileName );
 	}
-
-	load( fileName );
 }
 
 

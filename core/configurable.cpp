@@ -1,3 +1,6 @@
+#include <QVariant>
+#include <QMap>
+
 #include "configurable.h"
 
 
@@ -55,8 +58,25 @@ Configurable::OptionList Configurable::options( ) const {
  *
  */
 
+void configure( const QString& name, const QVariant& value ) {
+
+	Q_UNUSED( name );
+	Q_UNUSED( value );
+}
+
+
+
+/**
+ *
+ */
+
 void Configurable::configure( const QVariantMap& options ) {
 
-	Q_UNUSED( options );
+	QMapIterator< QString, QVariant > it( options );
+
+	while ( it.hasNext( )) {
+		it.next( );
+		configure( it.key( ), it.value( ));
+	}
 }
 

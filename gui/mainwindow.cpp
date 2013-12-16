@@ -51,25 +51,24 @@ void MainWindow::buildSelector( const QString& title ) const {
 	InformationsIterator it( informations );
 
 	QComboBox* combo = new QComboBox( );
-	Type* object;
+	OptionList options;
 
 	while ( it.hasNext( )) {
 		it.next( );
 
 		try {
-			object = Factory< Type >::create( it.key( ));
+			Type* object = Factory< Type >::create( it.key( ));
+			combo->addItem( it.key( ), qVariantFromValue(( void* )object ));
 		} catch ( ... ) {
-			object = 0;
-		}
-
-		if ( object ) {
-			combo->addItem( it.key( ), qVariantFromValue(( void* ) object ));
+			//
 		}
 	}
 
 	QVBoxLayout* layout = new QVBoxLayout( );
 	layout->addWidget( new QLabel( title ));
 	layout->addWidget( combo );
+
+	QVBoxLayout* optionsLayout = new QVBoxLayout( );
 
 	_layout->addLayout( layout );
 }
