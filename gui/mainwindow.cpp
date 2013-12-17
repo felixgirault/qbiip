@@ -1,11 +1,9 @@
-#include <QHBoxLayout>
-#include <QVBoxLayout>
+#include <QGridLayout>
+#include <QPushButton>
 #include <QLabel>
-#include <QComboBox>
 
 #include "mainwindow.h"
-#include "../core/factory.h"
-#include "../core/configurable.h"
+#include "selector.h"
 
 
 
@@ -15,9 +13,22 @@
 
 MainWindow::MainWindow( QWidget* parent ) :
 	QMainWindow( parent ),
-	_layout( new QHBoxLayout( )) {
+	_layout( new QGridLayout( )),
+	_start( new QPushButton( "Start" )) {
 
+	connect( _start, &QPushButton::clicked, this, &MainWindow::start );
 	setup( );
+}
+
+
+
+/**
+ *
+ */
+
+void MainWindow::start( ) {
+
+
 }
 
 
@@ -34,41 +45,11 @@ void MainWindow::setup( ) {
 	setWindowTitle( "QBiip" );
 	setCentralWidget( widget );
 
-	buildSelector< Input >( "Input" );
-	buildSelector< Output >( "Output" );
-}
+	_layout->addWidget( new QLabel( "Input" ), 0, 0 );
+	_layout->addWidget( new Selector< Input >( ), 1, 0 );
 
+	_layout->addWidget( new QLabel( "Output" ), 0, 1 );
+	_layout->addWidget( new Selector< Output >( ), 1, 1 );
 
-
-/**
- *
- */
-
-template< class Type >
-void MainWindow::buildSelector( const QString& title ) const {
-
-	Informations informations = Factory< Type >::informations( );
-	InformationsIterator it( informations );
-
-	QComboBox* combo = new QComboBox( );
-	OptionList options;
-
-	while ( it.hasNext( )) {
-		it.next( );
-
-		try {
-			Type* object = Factory< Type >::create( it.key( ));
-			combo->addItem( it.key( ), qVariantFromValue(( void* )object ));
-		} catch ( ... ) {
-			//
-		}
-	}
-
-	QVBoxLayout* layout = new QVBoxLayout( );
-	layout->addWidget( new QLabel( title ));
-	layout->addWidget( combo );
-
-	QVBoxLayout* optionsLayout = new QVBoxLayout( );
-
-	_layout->addLayout( layout );
+	_layout->addWidget( _start, 2, 0, 2, 0 );
 }

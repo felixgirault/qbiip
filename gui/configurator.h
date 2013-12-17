@@ -4,7 +4,8 @@
 #include <QWidget>
 
 class QFormLayout;
-class Configurable;
+class Stream;
+class ConfiguratorOption;
 
 
 
@@ -18,21 +19,20 @@ class Configurator : public QWidget
 
 	public:
 
-		Configurator( Configurable* configurable, QWidget* parent = 0 );
-		
+		Configurator( Stream* stream, QWidget* parent = 0 );
+		~Configurator( );
+
 	private:
 
 		void setup( );
-		void setupIntegerOption( const Configurable::Option& option );
-		void setupStringOption( const Configurable::Option& option );
-		void setupPathOption( const Configurable::Option& option );
-		
+
 	private:
 
 		QFormLayout* _layout;
 
-		Configurable* _configurable;
-		
+		Stream* _stream;
+		QList< ConfiguratorOption* > _options;
+
 };
 
 #endif // CONFIGURATOR_H

@@ -121,7 +121,7 @@ class Factory {
 
 
 		/**
-		 *	Returns a met of informations about all the registered types, in
+		 *	Returns a set of informations about all the registered types, in
 		 *	the form < name, description >.
 		 *
 		 *	@return Map of informations.

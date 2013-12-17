@@ -1,19 +1,23 @@
 #include <QFormLayout>
+#include <QLabel>
 
 #include "configurator.h"
-#include "../core/configurable.h"
+#include "configurator/option.h"
+#include "configurator/option/integer.h"
+#include "configurator/option/string.h"
+#include "configurator/option/path.h"
+#include "../core/stream.h"
 
 
 
 /**
- * @brief Configurator::Configurator
- * @param parent
+ *
  */
 
-Configurator::Configurator( Configurable* configurable, QWidget* parent ) :
+Configurator::Configurator( Stream* stream, QWidget* parent ) :
 	QWidget( parent ),
 	_layout( new QFormLayout( this )),
-	_configurable( configurable ) {
+	_stream( stream ) {
 
 	setup( );
 }
@@ -24,57 +28,45 @@ Configurator::Configurator( Configurable* configurable, QWidget* parent ) :
  *
  */
 
+Configurator::~Configurator( ) {
+
+	qDeleteAll( _options );
+}
+
+
+
+/**
+ *
+ */
+
 void Configurator::setup( ) {
 
+	ConfiguratorOption* option = 0;
+	Stream::OptionList options = _stream->options( );
 
+	if ( options.isEmpty( )) {
+		_layout->addRow( "No options available.", ( QWidget* )0 );
+	} else {
+		foreach ( const Stream::Option& o, _stream->options( )) {
+			switch ( o.type ) {
+				case Stream::Option::Integer:
+					option = new IntegerConfiguratorOption( );
+					break;
 
-	foreach ( const Configurable::Option& option, _configurable->options( )) {
-		switch ( option.type ) {
-			case Configurable::Option::Integer:
-				setupIntegerOption( option );
-				break;
+				case Stream::Option::String:
+					option = new StringConfiguratorOption( );
+					break;
 
-			case Configurable::Option::String:
-				setupStringOption( option );
-				break;
+				case Stream::Option::Path:
+					option = new PathConfiguratorOption( );
+					break;
 
-			case Configurable::Option::Path:
-				setupPathOption( option );
-				break;
+				default:
+					continue;
+			}
+
+			_layout->addRow( o.name, option->widget( ));
+			_options.append( option );
 		}
 	}
-}
-
-
-
-/**
- *
- */
-
-void Configurator::setupIntegerOption( const Configurable::Option& option ) {
-
-
-	_layout->addRow( option.name,  );
-}
-
-
-
-/**
- *
- */
-
-void Configurator::setupStringOption( const Configurable::Option& option ) {
-
-
-}
-
-
-
-/**
- *
- */
-
-void Configurator::setupPathOption( const Configurable::Option& option ) {
-
-
 }

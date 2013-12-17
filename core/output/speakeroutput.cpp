@@ -2,6 +2,7 @@
 
 #if defined( Q_OS_UNIX )
 #include <fcntl.h>
+#include <unistd.h>
 #include <sys/ioctl.h>
 #include <linux/kd.h>
 #elif defined( Q_OS_WIN )

@@ -1,7 +1,7 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include "configurable.h"
+#include "stream.h"
 #include "note.h"
 
 
@@ -10,7 +10,7 @@
  *	The Input class.
  */
 
-class Input : public Configurable {
+class Input : public Stream {
 
 	Q_OBJECT
 

@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 
-class QHBoxLayout;
+class QGridLayout;
+class QPushButton;
 class Input;
 class Output;
 
@@ -21,16 +22,18 @@ class MainWindow : public QMainWindow {
 
 		MainWindow( QWidget* parent = 0 );
 
+	public slots:
+
+		void start( );
+
 	private:
 
 		void setup( );
 
-		template< class Type >
-		void buildSelector( const QString& title ) const;
-
 	private:
 
-		QHBoxLayout* _layout;
+		QGridLayout* _layout;
+		QPushButton* _start;
 
 		Input* _input;
 		Output* _output;

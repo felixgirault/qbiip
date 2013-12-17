@@ -1,7 +1,7 @@
 #ifndef OUTPUT_H
 #define OUTPUT_H
 
-#include "configurable.h"
+#include "stream.h"
 #include "note.h"
 
 
@@ -10,7 +10,7 @@
  *	The Output class.
  */
 
-class Output : public Configurable {
+class Output : public Stream {
 
 	Q_OBJECT
 

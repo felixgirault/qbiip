@@ -28,7 +28,12 @@ SOURCES += main.cpp \
     ../core/output.cpp \
     ../core/streams.cpp \
     mainwindow.cpp \
-    configurator.cpp
+    configurator.cpp \
+    configurator/option.cpp \
+    configurator/option/integer.cpp \
+    configurator/option/string.cpp \
+    configurator/option/path.cpp \
+    ../core/stream.cpp
 
 HEADERS += \
     ../core/exception.h \
@@ -47,5 +52,11 @@ HEADERS += \
     ../core/output.h \
     ../core/streams.h \
     mainwindow.h \
-    configurator.h
+    configurator.h \
+    configurator/option.h \
+    configurator/option/integer.h \
+    configurator/option/string.h \
+    configurator/option/path.h \
+    selector.h \
+    ../core/stream.h
 

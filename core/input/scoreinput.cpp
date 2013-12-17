@@ -49,9 +49,9 @@ ScoreInput::OptionList ScoreInput::options( ) const {
 	OptionList options;
 	options.append(
 		Option(
-			"score",
-			"The path to the score to play.",
-			Option::String
+			Option::String,
+			"Score file",
+			"The path to the score to play."
 		)
 	);
 

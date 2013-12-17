@@ -7,7 +7,7 @@
  */
 
 Output::Output( QObject* parent ) :
-	Configurable( parent ) {
+	Stream( parent ) {
 
 }
 

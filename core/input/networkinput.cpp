@@ -45,16 +45,17 @@ NetworkInput::OptionList NetworkInput::options( ) const {
 	OptionList options;
 	options.append(
 		Option(
-			"port",
+			Option::Integer,
+			"Port",
 			"The port to listen to.",
-			Option::Integer
+			8119
 		)
 	);
 	options.append(
 		Option(
-			"track",
-			"The track to listen to.",
-			Option::String
+			Option::String,
+			"Track",
+			"The track to listen to."
 		)
 	);
 

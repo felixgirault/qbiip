@@ -58,7 +58,7 @@ Configurable::OptionList Configurable::options( ) const {
  *
  */
 
-void configure( const QString& name, const QVariant& value ) {
+void Configurable::configure( const QString& name, const QVariant& value ) {
 
 	Q_UNUSED( name );
 	Q_UNUSED( value );

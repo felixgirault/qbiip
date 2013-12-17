@@ -7,7 +7,7 @@
  */
 
 Input::Input( QObject* parent ) :
-	Configurable( parent ) {
+	Stream( parent ) {
 
 }
 

@@ -40,9 +40,10 @@ NetworkOutput::OptionList NetworkOutput::options( ) const {
 	OptionList options;
 	options.append(
 		Option(
-			"port",
+			Option::Integer,
+			"Port",
 			"The port on which to listen to.",
-			Option::Integer
+			8119
 		)
 	);
 
