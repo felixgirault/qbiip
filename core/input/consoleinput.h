@@ -16,7 +16,7 @@ class ConsoleInput : public Input {
 
 		ConsoleInput( QObject* parent = 0 );
 
-		void play( );
+		void start( const QVariantMap& options );
 		void stop( );
 
 	private:

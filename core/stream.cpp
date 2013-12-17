@@ -60,6 +60,28 @@ Stream::OptionList Stream::options( ) const {
  *
  */
 
+void Stream::configure( const QVariantMap& options ) {
+
+	_options = options;
+}
+
+
+
+/**
+ *
+ */
+
+void Stream::configure( const QString& name, const QVariant& value ) {
+
+	_options.insert( name, value );
+}
+
+
+
+/**
+ *
+ */
+
 void Stream::start( const QVariantMap& options ) {
 
 	Q_UNUSED( options );

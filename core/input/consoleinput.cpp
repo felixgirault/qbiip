@@ -34,7 +34,7 @@ ConsoleInput::ConsoleInput( QObject* parent ) :
  *
  */
 
-void ConsoleInput::play( ) {
+void ConsoleInput::start( ) {
 
 	Note note;
 	std::string track;

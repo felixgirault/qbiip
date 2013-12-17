@@ -52,7 +52,15 @@ class Stream : public QObject {
 		virtual ~Stream( );
 
 		virtual OptionList options( ) const;
+		virtual void configure( const QVariantMap& options );
+		virtual void configure( const QString& name, const QVariant& value );
+
 		virtual void start( const QVariantMap& options );
+		virtual void stop( );
+
+	protected:
+
+		QVariantMap _options;
 
 };
 

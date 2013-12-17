@@ -22,9 +22,7 @@ class NetworkInput : public Input {
 		NetworkInput( QObject* parent = 0 );
 
 		OptionList options( ) const;
-		void configure( const QVariantMap& options );
-
-		void play( );
+		void start( const QVariantMap& options );
 		void stop( );
 
 	private slots:

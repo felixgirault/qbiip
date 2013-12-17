@@ -23,12 +23,12 @@ class ScoreInput : public Input {
 		ScoreInput( QObject* parent = 0 );
 
 		OptionList options( ) const;
-		void configure( const QString& name, const QVariant& value );
+		void start( const QVariantMap& options );
+		void stop( );
+
+	private:
 
 		void load( const QString& fileName );
-
-		void play( );
-		void stop( );
 
 	private slots:
 

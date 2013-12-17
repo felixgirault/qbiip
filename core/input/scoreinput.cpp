@@ -185,7 +185,7 @@ void ScoreInput::load( const QString& fileName ) {
  *
  */
 
-void ScoreInput::play( ) {
+void ScoreInput::start( const QVariantMap& options ) {
 
 	_timer->start( _unit );
 }

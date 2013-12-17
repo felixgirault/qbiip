@@ -43,7 +43,7 @@ NetworkOutput::OptionList NetworkOutput::options( ) const {
 			Option::Integer,
 			"Port",
 			"The port on which to listen to.",
-			8119
+			NETWORK_OUTPUT_DEFAULT_PORT
 		)
 	);
 
