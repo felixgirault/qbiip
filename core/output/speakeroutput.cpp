@@ -33,7 +33,18 @@ REGISTER_PRODUCT(
  */
 
 SpeakerOutput::SpeakerOutput( QObject* parent ) :
-	Output( parent ) {
+	Output( parent ),
+	_console( 0 ) {
+
+}
+
+
+
+/**
+ *
+ */
+
+void SpeakerOutput::start( ) {
 
 #ifdef Q_OS_UNIX
 	_console = open( "/dev/console", O_WRONLY );
@@ -52,7 +63,7 @@ SpeakerOutput::SpeakerOutput( QObject* parent ) :
  *
  */
 
-SpeakerOutput::~SpeakerOutput( ) {
+void SpeakerOutput::stop( ) {
 
 #ifdef Q_OS_UNIX
 	close( _console );

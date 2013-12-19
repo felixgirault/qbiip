@@ -23,7 +23,8 @@ class ScoreInput : public Input {
 		ScoreInput( QObject* parent = 0 );
 
 		OptionList options( ) const;
-		void start( const QVariantMap& options );
+
+		void start( );
 		void stop( );
 
 	private:

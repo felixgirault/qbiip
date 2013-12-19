@@ -61,27 +61,6 @@ ScoreInput::OptionList ScoreInput::options( ) const {
 
 
 /**
- *	@todo Add a -repeat [times] option.
- */
-
-void ScoreInput::configure( const QString& name, const QVariant& value ) {
-
-	if ( name == "score" ) {
-		QString fileName = value.toString( );
-
-		if ( fileName.isEmpty( )) {
-			throw Exception(
-				"Please provide a score (-score fileName)."
-			);
-		}
-
-		load( fileName );
-	}
-}
-
-
-
-/**
  *
  */
 
@@ -185,8 +164,15 @@ void ScoreInput::load( const QString& fileName ) {
  *
  */
 
-void ScoreInput::start( const QVariantMap& options ) {
+void ScoreInput::start( ) {
 
+	QString fileName = option< QString >( "score" );
+
+	if ( fileName.isEmpty( )) {
+		throw new Exception( "" );
+	}
+
+	load( fileName );
 	_timer->start( _unit );
 }
 

@@ -18,7 +18,9 @@ class SpeakerOutput : public Output {
 	public:
 
 		SpeakerOutput( QObject* parent = 0 );
-		~SpeakerOutput( );
+
+		void start( );
+		void stop( );
 
 	public slots:
 

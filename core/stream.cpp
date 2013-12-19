@@ -82,8 +82,17 @@ void Stream::configure( const QString& name, const QVariant& value ) {
  *
  */
 
-void Stream::start( const QVariantMap& options ) {
+void Stream::start( ) {
 
-	Q_UNUSED( options );
+}
+
+
+
+/**
+ *
+ */
+
+void Stream::stop( ) {
+
 }
 

@@ -52,10 +52,22 @@ class Stream : public QObject {
 		virtual ~Stream( );
 
 		virtual OptionList options( ) const;
-		virtual void configure( const QVariantMap& options );
-		virtual void configure( const QString& name, const QVariant& value );
+		void configure( const QVariantMap& options );
+		void configure( const QString& name, const QVariant& value );
 
-		virtual void start( const QVariantMap& options );
+		template< typename Type >
+		Type option( const QString& name, const Type& defaultValue = Type( )) const {
+
+			QVariant variant = _options.value( name );
+
+			if ( !variant.isNull( ) && variant.canConvert< Type >( )) {
+				return variant.value< Type >( );
+			}
+
+			return defaultValue;
+		}
+
+		virtual void start( );
 		virtual void stop( );
 
 	protected:

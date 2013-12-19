@@ -20,7 +20,6 @@ class NetworkOutput : public Output
 		NetworkOutput( QObject* parent = 0 );
 
 		OptionList options( ) const;
-		void configure( const QVariantMap& options );
 
 	public slots:
 

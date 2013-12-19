@@ -38,12 +38,44 @@ class Selector : public QTabWidget {
 
 				try {
 					Type* object = Factory< Type >::create( it.key( ));
-					addTab( new Configurator( object ), it.key( ));
+					Configurator* configurator = new Configurator( object );
+					_configurators.append( configurator );
+					addTab( configurator, it.key( ));
 				} catch ( ... ) {
 					//
 				}
 			}
 		}
+
+
+
+		/**
+		 *
+		 */
+
+		void start( ) {
+
+			foreach ( Configurator* configurator, _configurators ) {
+				configurator->start( );
+			}
+		}
+
+
+
+		/**
+		 *
+		 */
+
+		void stop( ) {
+
+			foreach ( Configurator* configurator, _configurators ) {
+				configurator->stop( );
+			}
+		}
+
+	private:
+
+		QList< Configurator* > _configurators;
 
 };
 

@@ -19,9 +19,6 @@ class Input : public Stream {
 		Input( QObject* parent = 0 );
 		virtual ~Input( );
 
-		virtual void play( ) = 0;
-		virtual void stop( ) = 0;
-
 	signals:
 
 		void played( const Note& note );

@@ -39,6 +39,28 @@ Configurator::~Configurator( ) {
  *
  */
 
+void Configurator::start( ) {
+
+	_stream->start( );
+}
+
+
+
+/**
+ *
+ */
+
+void Configurator::stop( ) {
+
+	_stream->stop( );
+}
+
+
+
+/**
+ *
+ */
+
 void Configurator::setup( ) {
 
 	ConfiguratorOption* option = 0;

@@ -22,6 +22,9 @@ class Configurator : public QWidget
 		Configurator( Stream* stream, QWidget* parent = 0 );
 		~Configurator( );
 
+		void start( );
+		void stop( );
+
 	private:
 
 		void setup( );

@@ -25,7 +25,6 @@ REGISTER_PRODUCT(
 
 NetworkInput::NetworkInput( QObject* parent ) :
 	Input( parent ),
-	_port( 0 ),
 	_socket( new QUdpSocket( this )) {
 
 	connect(
@@ -68,33 +67,18 @@ NetworkInput::OptionList NetworkInput::options( ) const {
  *
  */
 
-void NetworkInput::configure( const QVariantMap& options ) {
+void NetworkInput::start( ) {
 
-	bool ok = false;
-	_port = options.value( "port" ).toInt( &ok );
-
-	if ( !ok ) {
-		_port = NETWORK_INPUT_DEFAULT_PORT;
-	}
-
-	_track = options.value( "track" ).toString( );
+	_track = option< QString >( "track" );
 
 	if ( _track.isEmpty( )) {
-		throw Exception(
-			"Please provide a track name (-track trackName)."
-		);
+		throw new Exception( "" );
 	}
-}
 
-
-
-/**
- *
- */
-
-void NetworkInput::play( ) {
-
-	_socket->bind( _port, QUdpSocket::ShareAddress );
+	_socket->bind(
+		option< int >( "port", NETWORK_INPUT_DEFAULT_PORT ),
+		QUdpSocket::ShareAddress
+	);
 }
 
 

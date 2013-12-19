@@ -24,7 +24,6 @@ REGISTER_PRODUCT(
 
 NetworkOutput::NetworkOutput( QObject* parent ) :
 	Output( parent ),
-	_port( 0 ),
 	_socket( new QUdpSocket( this )) {
 
 }
@@ -56,22 +55,6 @@ NetworkOutput::OptionList NetworkOutput::options( ) const {
  *
  */
 
-void NetworkOutput::configure( const QVariantMap& options ) {
-
-	bool ok = false;
-	_port = options.value( "port" ).toInt( &ok );
-
-	if ( !ok ) {
-		_port = NETWORK_OUTPUT_DEFAULT_PORT;
-	}
-}
-
-
-
-/**
- *
- */
-
 void NetworkOutput::play( const Note& note ) {
 
 	QByteArray datagram;
@@ -82,6 +65,6 @@ void NetworkOutput::play( const Note& note ) {
 	_socket->writeDatagram(
 		datagram,
 		QHostAddress::Broadcast,
-		_port
+		option< int >( "port", NETWORK_OUTPUT_DEFAULT_PORT )
 	);
 }

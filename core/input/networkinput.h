@@ -22,7 +22,8 @@ class NetworkInput : public Input {
 		NetworkInput( QObject* parent = 0 );
 
 		OptionList options( ) const;
-		void start( const QVariantMap& options );
+
+		void start( );
 		void stop( );
 
 	private slots:
@@ -31,7 +32,6 @@ class NetworkInput : public Input {
 
 	private:
 
-		int _port;
 		QUdpSocket* _socket;	//!<
 
 		QString _track;
