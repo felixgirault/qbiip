@@ -1,7 +1,7 @@
 #ifndef FREQUENCIES_H
 #define FREQUENCIES_H
 
-#include <QMap>
+#include <QHash>
 
 
 
@@ -19,7 +19,7 @@ class Frequencies {
 
 	private:
 
-		QMap< QString, float > _frequencies;
+		QHash< QString, float > _frequencies;
 
 };
 

@@ -3,6 +3,9 @@
 
 #include "../option.h"
 
+class QLineEdit;
+class QPushButton;
+
 
 
 /**
@@ -16,6 +19,15 @@ class PathConfiguratorOption : public ConfiguratorOption {
 		PathConfiguratorOption( );
 
 		QVariant value( ) const;
+
+	private slots:
+
+		void browse( );
+
+	private:
+
+		QLineEdit* _path;
+		QPushButton* _browse;
 
 };
 

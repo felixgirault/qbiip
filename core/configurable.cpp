@@ -1,5 +1,5 @@
 #include <QVariant>
-#include <QMap>
+#include <QHash>
 
 #include "configurable.h"
 
@@ -70,9 +70,9 @@ void Configurable::configure( const QString& name, const QVariant& value ) {
  *
  */
 
-void Configurable::configure( const QVariantMap& options ) {
+void Configurable::configure( const QVariantHash& options ) {
 
-	QMapIterator< QString, QVariant > it( options );
+	QHashIterator< QString, QVariant > it( options );
 
 	while ( it.hasNext( )) {
 		it.next( );

@@ -39,12 +39,14 @@ class Selector : public QTabWidget {
 				try {
 					Type* object = Factory< Type >::create( it.key( ));
 					Configurator* configurator = new Configurator( object );
-					_configurators.append( configurator );
 					addTab( configurator, it.key( ));
+					_configurators.append( configurator );
 				} catch ( ... ) {
 					//
 				}
 			}
+
+			_configurators.size( );
 		}
 
 
@@ -55,8 +57,8 @@ class Selector : public QTabWidget {
 
 		void start( ) {
 
-			foreach ( Configurator* configurator, _configurators ) {
-				configurator->start( );
+			for ( int i = 0; i < _configurators.size( ); ++i ) {
+				_configurators.at( i )->start( );
 			}
 		}
 
@@ -68,9 +70,7 @@ class Selector : public QTabWidget {
 
 		void stop( ) {
 
-			foreach ( Configurator* configurator, _configurators ) {
-				configurator->stop( );
-			}
+
 		}
 
 	private:

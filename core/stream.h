@@ -52,7 +52,7 @@ class Stream : public QObject {
 		virtual ~Stream( );
 
 		virtual OptionList options( ) const;
-		void configure( const QVariantMap& options );
+		void configure( const QVariantHash& options );
 		void configure( const QString& name, const QVariant& value );
 
 		template< typename Type >
@@ -72,7 +72,7 @@ class Stream : public QObject {
 
 	protected:
 
-		QVariantMap _options;
+		QVariantHash _options;
 
 };
 

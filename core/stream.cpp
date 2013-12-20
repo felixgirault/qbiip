@@ -60,7 +60,7 @@ Stream::OptionList Stream::options( ) const {
  *
  */
 
-void Stream::configure( const QVariantMap& options ) {
+void Stream::configure( const QVariantHash& options ) {
 
 	_options = options;
 }

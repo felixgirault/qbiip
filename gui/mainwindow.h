@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "selector.h"
+
 class QGridLayout;
 class QPushButton;
 class Input;
@@ -35,8 +37,8 @@ class MainWindow : public QMainWindow {
 		QGridLayout* _layout;
 		QPushButton* _start;
 
-		Input* _input;
-		Output* _output;
+		Selector< Input >* _inputSelector;
+		Selector< Output >* _outputSelector;
 
 };
 

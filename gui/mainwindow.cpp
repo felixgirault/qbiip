@@ -3,7 +3,6 @@
 #include <QLabel>
 
 #include "mainwindow.h"
-#include "selector.h"
 
 
 
@@ -28,7 +27,8 @@ MainWindow::MainWindow( QWidget* parent ) :
 
 void MainWindow::start( ) {
 
-
+	_inputSelector->start( );
+	_outputSelector->start( );
 }
 
 

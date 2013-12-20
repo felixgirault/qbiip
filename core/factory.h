@@ -2,10 +2,10 @@
 #define FACTORY_H
 
 #include <QList>
-#include <QMap>
+#include <QHash>
 
-typedef QMap< QString, QString > Informations;
-typedef QMapIterator< QString, QString > InformationsIterator;
+typedef QHash< QString, QString > Informations;
+typedef QHashIterator< QString, QString > InformationsIterator;
 
 
 
@@ -15,6 +15,8 @@ typedef QMapIterator< QString, QString > InformationsIterator;
 
 template< class Product >
 class Factory {
+
+	Q_DISABLE_COPY( Factory )
 
 	public:
 
@@ -168,32 +170,6 @@ class Factory {
 		 */
 
 		Factory( ) { }
-
-
-
-		/**
-		 *	Private copy constructor to prevent copy.
-		 *
-		 *	@param other Other factory.
-		 */
-
-		Factory( const Factory& other ) {
-
-			Q_UNUSED( other );
-		}
-
-
-
-		/**
-		 *	Private assignment operator to prevent copy.
-		 *
-		 *	@param other Other factory.
-		 */
-
-		void operator=( const Factory& other ) {
-
-			Q_UNUSED( other );
-		}
 
 
 

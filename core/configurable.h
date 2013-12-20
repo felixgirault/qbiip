@@ -50,7 +50,7 @@ class Configurable : public QObject {
 
 		virtual OptionList options( ) const;
 		virtual void configure( const QString& name, const QVariant& value );
-		void configure( const QVariantMap& options );
+		void configure( const QVariantHash& options );
 
 };
 
