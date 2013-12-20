@@ -4,9 +4,6 @@
 #include <QList>
 #include <QHash>
 
-typedef QHash< QString, QString > Informations;
-typedef QHashIterator< QString, QString > InformationsIterator;
-
 
 
 /**
@@ -22,9 +19,9 @@ class Factory {
 
 		typedef Product* ( *CreateFunction )( );
 
-	private:
+	public:
 
-		class ProductMetaType {
+		class MetaProduct {
 
 			public:
 
@@ -32,7 +29,7 @@ class Factory {
 				 *	Default constructor.
 				 */
 
-				ProductMetaType( ) { }
+				MetaProduct( ) { }
 
 
 
@@ -44,7 +41,7 @@ class Factory {
 				 *	@param function Helper function to create the product.
 				 */
 
-				ProductMetaType(
+				MetaProduct(
 					const QString& name,
 					const QString& description,
 					CreateFunction function
@@ -101,6 +98,8 @@ class Factory {
 
 		};
 
+		typedef QList< MetaProduct > MetaProductList;
+
 	public:
 
 		/**
@@ -111,13 +110,13 @@ class Factory {
 		 *	@param function Helper function to create the product.
 		 */
 
-		static void registerProductMetaType(
+		static void registerMetaProduct(
 			const QString& name,
 			const QString& description,
 			CreateFunction function
 		) {
 			Factory& _this = instance( );
-			_this._registry.append( ProductMetaType( name, description, function ));
+			_this._types.append( MetaProduct( name, description, function ));
 		}
 
 
@@ -129,16 +128,10 @@ class Factory {
 		 *	@return Map of informations.
 		 */
 
-		static Informations informations( ) {
+		static MetaProductList types( ) {
 
 			Factory& _this = instance( );
-			Informations informations;
-
-			foreach ( ProductMetaType meta, _this._registry ) {
-				informations.insert( meta.name( ), meta.description( ));
-			}
-
-			return informations;
+			return _this._types;
 		}
 
 
@@ -154,7 +147,7 @@ class Factory {
 		static Product* create( const QString& name ) {
 			Factory& _this = instance( );
 
-			foreach ( const ProductMetaType& meta, _this._registry ) {
+			foreach ( const MetaProduct& meta, _this._types ) {
 				if ( name.compare( meta.name( )) == 0 ) {
 					return meta.create( );
 				}
@@ -187,7 +180,7 @@ class Factory {
 
 	private:
 
-		QList< ProductMetaType > _registry;	//!< Regitry of products meta.
+		MetaProductList _types;	//!< Regitry of products meta.
 
 };
 
@@ -211,7 +204,7 @@ class ProductRegistrar {
 
 		ProductRegistrar( const QString& name, const QString& description ) {
 
-			Factory< Ancestor >::registerProductMetaType( name, description, create );
+			Factory< Ancestor >::registerMetaProduct( name, description, create );
 		}
 
 

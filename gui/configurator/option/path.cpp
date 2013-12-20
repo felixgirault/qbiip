@@ -1,6 +1,5 @@
 #include <QLineEdit>
 #include <QPushButton>
-#include <QHBoxLayout>
 #include <QFileDialog>
 
 #include "path.h"
@@ -18,9 +17,8 @@ PathConfiguratorOption::PathConfiguratorOption( ) :
 
 	connect( _browse, &QPushButton::clicked, this, &PathConfiguratorOption::browse );
 
-	QHBoxLayout* layout = new QHBoxLayout( _widget );
-	layout->addWidget( _path );
-	layout->addWidget( _browse );
+	_layout->addWidget( _path );
+	_layout->addWidget( _browse );
 }
 
 
@@ -31,8 +29,7 @@ PathConfiguratorOption::PathConfiguratorOption( ) :
 
 QVariant PathConfiguratorOption::value( ) const {
 
-	QLineEdit* input = qobject_cast< QLineEdit* >( _widget );
-	return QVariant( input->text( ));
+	return QVariant( _path->text( ));
 }
 
 
@@ -43,7 +40,7 @@ QVariant PathConfiguratorOption::value( ) const {
 
 void PathConfiguratorOption::browse( ) {
 
-	QFileDialog dialog( _widget );
+	QFileDialog dialog( this );
 
 	if ( dialog.exec( )) {
 		_path->setText( dialog.selectedFiles( ).first( ));

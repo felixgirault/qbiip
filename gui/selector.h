@@ -30,19 +30,15 @@ class Selector : public QTabWidget {
 		Selector( QWidget* parent = 0 ) :
 			QTabWidget( parent ) {
 
-			Informations informations = Factory< Type >::informations( );
-			InformationsIterator it( informations );
+			typename Factory< Type >::MetaProductList types = Factory< Type >::types( );
 
-			while ( it.hasNext( )) {
-				it.next( );
+			foreach ( const typename Factory< Type >::MetaProduct& type, types ) {
+				Type* object = Factory< Type >::create( type.name( ));
 
-				try {
-					Type* object = Factory< Type >::create( it.key( ));
+				if ( object ) {
 					Configurator* configurator = new Configurator( object );
-					addTab( configurator, it.key( ));
+					addTab( configurator, type.name( ));
 					_configurators.append( configurator );
-				} catch ( ... ) {
-					//
 				}
 			}
 

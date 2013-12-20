@@ -63,13 +63,14 @@ void Configurator::stop( ) {
 
 void Configurator::setup( ) {
 
-	ConfiguratorOption* option = 0;
 	Stream::OptionList options = _stream->options( );
 
 	if ( options.isEmpty( )) {
 		_layout->addRow( "No options available.", ( QWidget* )0 );
 	} else {
 		foreach ( const Stream::Option& o, _stream->options( )) {
+			ConfiguratorOption* option = 0;
+
 			switch ( o.type ) {
 				case Stream::Option::Integer:
 					option = new IntegerConfiguratorOption( );
@@ -87,7 +88,7 @@ void Configurator::setup( ) {
 					continue;
 			}
 
-			_layout->addRow( o.name, option->widget( ));
+			_layout->addRow( o.name, option );
 			_options.append( option );
 		}
 	}

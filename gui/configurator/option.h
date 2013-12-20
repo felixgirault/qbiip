@@ -1,11 +1,9 @@
 #ifndef CONFIGURATOR_OPTION_H
 #define CONFIGURATOR_OPTION_H
 
-#include <QObject>
-#include <QList>
+#include <QWidget>
 #include <QVariant>
-
-class QWidget;
+#include <QHBoxLayout>
 
 
 
@@ -13,19 +11,18 @@ class QWidget;
  *
  */
 
-class ConfiguratorOption : public QObject {
+class ConfiguratorOption : public QWidget {
 
 	public:
 
-		ConfiguratorOption( QWidget* widget = 0 );
+		ConfiguratorOption( QWidget* parent = 0 );
 		virtual ~ConfiguratorOption( );
 
-		QWidget* widget( ) const;
 		virtual QVariant value( ) const = 0;
 
 	protected:
 
-		QWidget* _widget;
+		QHBoxLayout* _layout;
 
 };
 

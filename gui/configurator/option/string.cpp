@@ -1,5 +1,3 @@
-#include <QLineEdit>
-
 #include "string.h"
 
 
@@ -9,8 +7,10 @@
  */
 
 StringConfiguratorOption::StringConfiguratorOption( ) :
-	ConfiguratorOption( new QLineEdit( )) {
+	ConfiguratorOption( ),
+	_input( new QLineEdit( )) {
 
+	_layout->addWidget( _input );
 }
 
 
@@ -21,6 +21,5 @@ StringConfiguratorOption::StringConfiguratorOption( ) :
 
 QVariant StringConfiguratorOption::value( ) const {
 
-	QLineEdit* input = qobject_cast< QLineEdit* >( _widget );
-	return QVariant( input->text( ));
+	return QVariant( _input->text( ));
 }
