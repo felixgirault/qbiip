@@ -8,18 +8,17 @@
 /**
  *	The State class.
  */
-
 class State : public QObject {
 
 	Q_OBJECT
 
 	public:
 
-		virtual ~State( ) { }
+		virtual ~State() {}
 
 	public:
 
-		virtual void exec( ) = 0;
+		virtual void exec() = 0;
 
 };
 

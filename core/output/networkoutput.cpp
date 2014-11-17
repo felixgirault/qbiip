@@ -8,7 +8,6 @@
 /**
  *
  */
-
 REGISTER_PRODUCT(
 	Output,
 	NetworkOutput,
@@ -21,11 +20,10 @@ REGISTER_PRODUCT(
 /**
  *
  */
-
-NetworkOutput::NetworkOutput( QObject* parent ) :
-	Output( parent ),
-	_port( 0 ),
-	_socket( new QUdpSocket( this )) {
+NetworkOutput::NetworkOutput(QObject* parent) :
+	Output(parent),
+	_port(0),
+	_socket(new QUdpSocket(this)) {
 
 }
 
@@ -34,9 +32,7 @@ NetworkOutput::NetworkOutput( QObject* parent ) :
 /**
  *
  */
-
-NetworkOutput::OptionList NetworkOutput::options( ) const {
-
+NetworkOutput::OptionList NetworkOutput::options() const {
 	OptionList options;
 	options.append(
 		Option(
@@ -54,13 +50,11 @@ NetworkOutput::OptionList NetworkOutput::options( ) const {
 /**
  *
  */
-
-void NetworkOutput::configure( const QVariantMap& options ) {
-
+void NetworkOutput::configure(const QVariantMap& options) {
 	bool ok = false;
-	_port = options.value( "port" ).toInt( &ok );
+	_port = options.value("port").toInt(&ok);
 
-	if ( !ok ) {
+	if (!ok) {
 		_port = NETWORK_OUTPUT_DEFAULT_PORT;
 	}
 }
@@ -70,11 +64,9 @@ void NetworkOutput::configure( const QVariantMap& options ) {
 /**
  *
  */
-
-void NetworkOutput::play( const Note& note ) {
-
+void NetworkOutput::play(const Note& note) {
 	QByteArray datagram;
-	QDataStream stream( &datagram, QIODevice::WriteOnly );
+	QDataStream stream(&datagram, QIODevice::WriteOnly);
 
 	stream << note;
 

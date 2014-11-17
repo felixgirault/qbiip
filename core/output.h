@@ -9,19 +9,18 @@
 /**
  *	The Output class.
  */
-
 class Output : public Configurable {
 
 	Q_OBJECT
 
 	public:
 
-		Output( QObject* parent = 0 );
-		virtual ~Output( );
+		Output(QObject* parent = 0);
+		virtual ~Output();
 
 	public slots:
 
-		virtual void play( const Note& note ) = 0;
+		virtual void play(const Note& note) = 0;
 
 };
 

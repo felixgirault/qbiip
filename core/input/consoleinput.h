@@ -9,15 +9,14 @@
 /**
  *	The ConsoleInput class
  */
-
 class ConsoleInput : public Input {
 
 	public:
 
-		ConsoleInput( QObject* parent = 0 );
+		ConsoleInput(QObject* parent = 0);
 
-		void play( );
-		void stop( );
+		void play();
+		void stop();
 
 	private:
 

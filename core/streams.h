@@ -9,8 +9,7 @@
 /**
  *
  */
-
-std::ostream& operator<<( std::ostream& stream, const QString& string );
-std::istream& operator>>( std::istream& stream, QString& string );
+std::ostream& operator<<(std::ostream& stream, const QString& string);
+std::istream& operator>>(std::istream& stream, QString& string);
 
 #endif // STREAMS_H

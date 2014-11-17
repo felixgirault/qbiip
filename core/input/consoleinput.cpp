@@ -9,7 +9,6 @@
 /**
  *
  */
-
 REGISTER_PRODUCT(
 	Input,
 	ConsoleInput,
@@ -22,43 +21,39 @@ REGISTER_PRODUCT(
 /**
  *
  */
-
-ConsoleInput::ConsoleInput( QObject* parent ) :
-	Input( parent ) {
-
-}
+ConsoleInput::ConsoleInput(QObject* parent) :
+	Input(parent)
+{}
 
 
 
 /**
  *
  */
-
-void ConsoleInput::play( ) {
-
+void ConsoleInput::play() {
 	Note note;
 	std::string track;
 	std::string name;
 
 	std::cout << "track: ";
 	std::cin >> track;
-	note.track = QString::fromStdString( track );
+	note.track = QString::fromStdString(track);
 
 	std::cout << "duration: ";
 	std::cin >> note.duration;
 
-	while ( 1 ) {
+	while (1) {
 		try {
 			std::cout << "note: ";
 			std::cin >> name;
 
 			note.frequency = _frequencies.frequency(
-				QString::fromStdString( name )
+				QString::fromStdString(name)
 			);
 
-			emit played( note );
-		} catch ( const Exception& e ) {
-			std::cerr << e.message( ).toStdString( ) << std::endl;
+			emit played(note);
+		} catch (const Exception& e) {
+			std::cerr << e.message().toStdString() << std::endl;
 		}
 	}
 }
@@ -68,7 +63,4 @@ void ConsoleInput::play( ) {
 /**
  *
  */
-
-void ConsoleInput::stop( ) {
-
-}
+void ConsoleInput::stop() {}

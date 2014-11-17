@@ -12,21 +12,20 @@ class Output;
 /**
  *	The MainWindow class
  */
-
 class MainWindow : public QMainWindow {
 
 	Q_OBJECT
 
 	public:
 
-		MainWindow( QWidget* parent = 0 );
+		MainWindow(QWidget* parent = 0);
 
 	private:
 
-		void setup( );
+		void setup();
 
 		template< class Type >
-		void buildSelector( const QString& title ) const;
+		void buildSelector(const QString& title) const;
 
 	private:
 

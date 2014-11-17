@@ -5,10 +5,8 @@
 /**
  *
  */
-
-std::ostream& operator<<( std::ostream& stream, const QString& string ) {
-
-	stream << string.toStdString( );
+std::ostream& operator<<(std::ostream& stream, const QString& string) {
+	stream << string.toStdString();
 	return stream;
 }
 
@@ -17,12 +15,10 @@ std::ostream& operator<<( std::ostream& stream, const QString& string ) {
 /**
  *
  */
-
-std::istream& operator>>( std::istream& stream, QString& string ) {
-
+std::istream& operator>>(std::istream& stream, QString& string) {
 	std::string buffer;
 	stream >> buffer;
 
-	string = QString::fromStdString( buffer );
+	string = QString::fromStdString(buffer);
 	return stream;
 }

@@ -8,15 +8,14 @@
 /**
  *	The Exception class.
  */
-
 class Exception {
 
 	public:
 
-		Exception( const QString& message );
-		~Exception( ) throw ( ) { }
+		Exception(const QString& message);
+		~Exception() throw () {}
 
-		QString message( ) const;
+		QString message() const;
 
 	private:
 

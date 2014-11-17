@@ -5,15 +5,14 @@
 /**
  *
  */
-
 Configurable::Option::Option(
 	const QString& name,
 	const QString& description,
 	Type type
 ) :
-	name( name ),
-	description( description ),
-	type( type ) {
+	name(name),
+	description(description),
+	type(type) {
 
 }
 
@@ -22,19 +21,8 @@ Configurable::Option::Option(
 /**
  *
  */
-
-Configurable::Configurable( QObject* parent ) :
-	QObject( parent ) {
-
-}
-
-
-
-/**
- *
- */
-
-Configurable::~Configurable( ) {
+Configurable::Configurable(QObject* parent) :
+	QObject(parent) {
 
 }
 
@@ -43,10 +31,8 @@ Configurable::~Configurable( ) {
 /**
  *
  */
+Configurable::~Configurable() {
 
-Configurable::OptionList Configurable::options( ) const {
-
-	return OptionList( );
 }
 
 
@@ -54,9 +40,16 @@ Configurable::OptionList Configurable::options( ) const {
 /**
  *
  */
+Configurable::OptionList Configurable::options() const {
+	return OptionList();
+}
 
-void Configurable::configure( const QVariantMap& options ) {
 
-	Q_UNUSED( options );
+
+/**
+ *
+ */
+void Configurable::configure(const QVariantMap& options) {
+	Q_UNUSED(options);
 }
 

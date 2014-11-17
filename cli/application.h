@@ -15,28 +15,27 @@ class Output;
 /**
  *	The QBiip class.
  */
-
 class Application : public QCoreApplication {
 
 	Q_OBJECT
 
 	public:
 
-		Application( int argc, char* argv[ ]);
+		Application(int argc, char* argv[]);
 
 	public slots:
 
-		int exec( );
+		int exec();
 
 	private:
 
-		void parseArguments( );
+		void parseArguments();
 
 		template< class Type >
-		void printInformations( const QString& typeName ) const;
+		void printInformations(const QString& typeName) const;
 
 		template< class Type >
-		Type* create( const QString& typeName ) const;
+		Type* create(const QString& typeName) const;
 
 	private:
 

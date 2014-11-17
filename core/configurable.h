@@ -46,11 +46,11 @@ class Configurable : public QObject {
 
 	public:
 
-		Configurable( QObject* parent = 0 );
-		virtual ~Configurable( );
+		Configurable(QObject* parent = 0);
+		virtual ~Configurable();
 
-		virtual OptionList options( ) const;
-		virtual void configure( const QVariantMap& options );
+		virtual OptionList options() const;
+		virtual void configure(const QVariantMap& options);
 
 };
 

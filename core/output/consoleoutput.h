@@ -8,16 +8,15 @@
 /**
  *	The ConsoleOutput class
  */
-
 class ConsoleOutput : public Output {
 
 	public:
 
-		ConsoleOutput( QObject* parent = 0 );
+		ConsoleOutput(QObject* parent = 0);
 
 	public slots:
 
-		void play( const Note& note );
+		void play(const Note& note);
 
 };
 

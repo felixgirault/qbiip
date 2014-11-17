@@ -3,10 +3,17 @@
 
 #include "core_global.h"
 
-class CORESHARED_EXPORT Core
-{
+
+
+/**
+ *
+ */
+class CORESHARED_EXPORT Core {
+
 	public:
+
 		Core();
+
 };
 
 #endif // CORE_H

@@ -5,18 +5,13 @@
 /**
  *
  */
-
-Output::Output( QObject* parent ) :
-	Configurable( parent ) {
-
-}
+Output::Output(QObject* parent) :
+	Configurable(parent)
+{}
 
 
 
 /**
  *
  */
-
-Output::~Output( ) {
-
-}
+Output::~Output() {}

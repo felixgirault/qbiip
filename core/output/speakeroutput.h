@@ -10,19 +10,18 @@
 /**
  *	The SpeakerOutput class.
  */
-
 class SpeakerOutput : public Output {
 
 	Q_OBJECT
 
 	public:
 
-		SpeakerOutput( QObject* parent = 0 );
-		~SpeakerOutput( );
+		SpeakerOutput(QObject* parent = 0);
+		~SpeakerOutput();
 
 	public slots:
 
-		void play( const Note& note );
+		void play(const Note& note);
 
 	private:
 

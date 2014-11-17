@@ -5,9 +5,8 @@
 /**
  *	Constructor.
  */
-
-Exception::Exception( const QString& message ) :
-	_message( message ) {
+Exception::Exception(const QString& message) :
+	_message(message) {
 
 }
 
@@ -16,8 +15,6 @@ Exception::Exception( const QString& message ) :
 /**
  *
  */
-
-QString Exception::message( ) const {
-
+QString Exception::message() const {
 	return _message;
 }

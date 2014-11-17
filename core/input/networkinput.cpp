@@ -9,7 +9,6 @@
 /**
  *
  */
-
 REGISTER_PRODUCT(
 	Input,
 	NetworkInput,
@@ -22,11 +21,10 @@ REGISTER_PRODUCT(
 /**
  *
  */
-
-NetworkInput::NetworkInput( QObject* parent ) :
-	Input( parent ),
-	_port( 0 ),
-	_socket( new QUdpSocket( this )) {
+NetworkInput::NetworkInput(QObject* parent) :
+	Input(parent),
+	_port(0),
+	_socket(new QUdpSocket(this)) {
 
 	connect(
 		_socket, &QUdpSocket::readyRead,
@@ -39,9 +37,7 @@ NetworkInput::NetworkInput( QObject* parent ) :
 /**
  *
  */
-
-NetworkInput::OptionList NetworkInput::options( ) const {
-
+NetworkInput::OptionList NetworkInput::options() const {
 	OptionList options;
 	options.append(
 		Option(
@@ -66,19 +62,17 @@ NetworkInput::OptionList NetworkInput::options( ) const {
 /**
  *
  */
-
-void NetworkInput::configure( const QVariantMap& options ) {
-
+void NetworkInput::configure(const QVariantMap& options) {
 	bool ok = false;
-	_port = options.value( "port" ).toInt( &ok );
+	_port = options.value("port").toInt(&ok);
 
-	if ( !ok ) {
+	if (!ok) {
 		_port = NETWORK_INPUT_DEFAULT_PORT;
 	}
 
-	_track = options.value( "track" ).toString( );
+	_track = options.value("track").toString();
 
-	if ( _track.isEmpty( )) {
+	if (_track.isEmpty()) {
 		throw Exception(
 			"Please provide a track name (-track trackName)."
 		);
@@ -90,10 +84,8 @@ void NetworkInput::configure( const QVariantMap& options ) {
 /**
  *
  */
-
-void NetworkInput::play( ) {
-
-	_socket->bind( _port, QUdpSocket::ShareAddress );
+void NetworkInput::play() {
+	_socket->bind(_port, QUdpSocket::ShareAddress);
 }
 
 
@@ -101,33 +93,27 @@ void NetworkInput::play( ) {
 /**
  *
  */
-
-void NetworkInput::stop( ) {
-
-
-}
+void NetworkInput::stop() {}
 
 
 
 /**
  *
  */
-
-void NetworkInput::processPendingDatagrams( ) {
-
-	while ( _socket->hasPendingDatagrams( )) {
+void NetworkInput::processPendingDatagrams() {
+	while (_socket->hasPendingDatagrams()) {
 		QByteArray datagram;
-		datagram.resize( _socket->pendingDatagramSize( ));
+		datagram.resize(_socket->pendingDatagramSize());
 
-		_socket->readDatagram( datagram.data( ), datagram.size( ));
+		_socket->readDatagram(datagram.data(), datagram.size());
 
-		QDataStream stream( datagram );
+		QDataStream stream(datagram);
 		Note note;
 
 		stream >> note;
 
-		if ( note.track == _track ) {
-			emit played( note );
+		if (note.track == _track) {
+			emit played(note);
 		}
 	}
 }

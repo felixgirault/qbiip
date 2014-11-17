@@ -12,19 +12,18 @@ class QUdpSocket;
 /**
  *	The NetworkOutput class.
  */
-
 class NetworkOutput : public Output
 {
 	public:
 
-		NetworkOutput( QObject* parent = 0 );
+		NetworkOutput(QObject* parent = 0);
 
-		OptionList options( ) const;
-		void configure( const QVariantMap& options );
+		OptionList options() const;
+		void configure(const QVariantMap& options);
 
 	public slots:
 
-		void play( const Note& note );
+		void play(const Note& note);
 
 	private:
 

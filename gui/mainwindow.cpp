@@ -12,12 +12,11 @@
 /**
  *
  */
+MainWindow::MainWindow(QWidget* parent) :
+	QMainWindow(parent),
+	_layout(new QHBoxLayout()) {
 
-MainWindow::MainWindow( QWidget* parent ) :
-	QMainWindow( parent ),
-	_layout( new QHBoxLayout( )) {
-
-	setup( );
+	setup();
 }
 
 
@@ -25,17 +24,15 @@ MainWindow::MainWindow( QWidget* parent ) :
 /**
  *
  */
+void MainWindow::setup() {
+	QWidget* widget = new QWidget();
+	widget->setLayout(_layout);
 
-void MainWindow::setup( ) {
+	setWindowTitle("QBiip");
+	setCentralWidget(widget);
 
-	QWidget* widget = new QWidget( );
-	widget->setLayout( _layout );
-
-	setWindowTitle( "QBiip" );
-	setCentralWidget( widget );
-
-	buildSelector< Input >( "Input" );
-	buildSelector< Output >( "Output" );
+	buildSelector< Input >("Input");
+	buildSelector< Output >("Output");
 }
 
 
@@ -43,33 +40,31 @@ void MainWindow::setup( ) {
 /**
  *
  */
-
 template< class Type >
-void MainWindow::buildSelector( const QString& title ) const {
+void MainWindow::buildSelector(const QString& title) const {
+	Informations informations = Factory< Type >::informations();
+	InformationsIterator it(informations);
 
-	Informations informations = Factory< Type >::informations( );
-	InformationsIterator it( informations );
-
-	QComboBox* combo = new QComboBox( );
+	QComboBox* combo = new QComboBox();
 	Type* object;
 
-	while ( it.hasNext( )) {
-		it.next( );
+	while (it.hasNext()) {
+		it.next();
 
 		try {
-			object = Factory< Type >::create( it.key( ));
-		} catch ( ... ) {
+			object = Factory< Type >::create(it.key());
+		} catch (...) {
 			object = 0;
 		}
 
-		if ( object ) {
-			combo->addItem( it.key( ), qVariantFromValue(( void* ) object ));
+		if (object) {
+			combo->addItem(it.key(), qVariantFromValue((void*) object));
 		}
 	}
 
-	QVBoxLayout* layout = new QVBoxLayout( );
-	layout->addWidget( new QLabel( title ));
-	layout->addWidget( combo );
+	QVBoxLayout* layout = new QVBoxLayout();
+	layout->addWidget(new QLabel(title));
+	layout->addWidget(combo);
 
-	_layout->addLayout( layout );
+	_layout->addLayout(layout);
 }

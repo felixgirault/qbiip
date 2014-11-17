@@ -8,14 +8,13 @@
 /**
  *	The Frequencies class.
  */
-
 class Frequencies {
 
 	public:
 
-		Frequencies( );
+		Frequencies();
 
-		float frequency( const QString& key ) const;
+		float frequency(const QString& key) const;
 
 	private:
 

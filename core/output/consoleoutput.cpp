@@ -8,7 +8,6 @@
 /**
  *
  */
-
 REGISTER_PRODUCT(
 	Output,
 	ConsoleOutput,
@@ -21,19 +20,15 @@ REGISTER_PRODUCT(
 /**
  *
  */
-
-ConsoleOutput::ConsoleOutput( QObject* parent ) :
-	Output( parent ) {
-
-}
+ConsoleOutput::ConsoleOutput(QObject* parent) :
+	Output(parent)
+{}
 
 
 
 /**
  *
  */
-
-void ConsoleOutput::play( const Note& note ) {
-
+void ConsoleOutput::play(const Note& note) {
 	std::cout << note << std::endl;
 }

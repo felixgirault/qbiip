@@ -12,24 +12,23 @@ class QUdpSocket;
 /**
  *	The NetworkInput class.
  */
-
 class NetworkInput : public Input {
 
 	Q_OBJECT
 
 	public:
 
-		NetworkInput( QObject* parent = 0 );
+		NetworkInput(QObject* parent = 0);
 
-		OptionList options( ) const;
-		void configure( const QVariantMap& options );
+		OptionList options() const;
+		void configure(const QVariantMap& options);
 
-		void play( );
-		void stop( );
+		void play();
+		void stop();
 
 	private slots:
 
-		void processPendingDatagrams( );
+		void processPendingDatagrams();
 
 	private:
 

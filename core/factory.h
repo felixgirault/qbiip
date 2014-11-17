@@ -12,13 +12,12 @@ typedef QMapIterator< QString, QString > InformationsIterator;
 /**
  *	A generic factory.
  */
-
 template< class Product >
 class Factory {
 
 	public:
 
-		typedef Product* ( *CreateFunction )( );
+		typedef Product* (*CreateFunction)();
 
 	private:
 
@@ -29,8 +28,7 @@ class Factory {
 				/**
 				 *	Default constructor.
 				 */
-
-				ProductMetaType( ) { }
+				ProductMetaType() {}
 
 
 
@@ -41,16 +39,15 @@ class Factory {
 				 *	@param description Description of the product.
 				 *	@param function Helper function to create the product.
 				 */
-
 				ProductMetaType(
 					const QString& name,
 					const QString& description,
 					CreateFunction function
 				) :
-					_name( name ),
-					_description( description ),
-					_create( function )
-				{ }
+					_name(name),
+					_description(description),
+					_create(function)
+				{}
 
 
 
@@ -59,9 +56,7 @@ class Factory {
 				 *
 				 *	@return Product name.
 				 */
-
-				QString name( ) const{
-
+				QString name() const {
 					return _name;
 				}
 
@@ -72,9 +67,7 @@ class Factory {
 				 *
 				 *	@return Product description.
 				 */
-
-				QString description( ) const {
-
+				QString description() const {
 					return _description;
 				}
 
@@ -85,10 +78,8 @@ class Factory {
 				 *
 				 *	@return Product instance.
 				 */
-
-				Product* create( ) const {
-
-					return _create( );
+				Product* create() const {
+					return _create();
 				}
 
 			private:
@@ -108,14 +99,13 @@ class Factory {
 		 *	@param description Description of the product.
 		 *	@param function Helper function to create the product.
 		 */
-
 		static void registerProductMetaType(
 			const QString& name,
 			const QString& description,
 			CreateFunction function
 		) {
-			Factory& _this = instance( );
-			_this._registry.append( ProductMetaType( name, description, function ));
+			Factory& _this = instance();
+			_this._registry.append(ProductMetaType(name, description, function));
 		}
 
 
@@ -126,14 +116,12 @@ class Factory {
 		 *
 		 *	@return Map of informations.
 		 */
-
-		static Informations informations( ) {
-
-			Factory& _this = instance( );
+		static Informations informations() {
+			Factory& _this = instance();
 			Informations informations;
 
-			foreach ( ProductMetaType meta, _this._registry ) {
-				informations.insert( meta.name( ), meta.description( ));
+			foreach (ProductMetaType meta, _this._registry) {
+				informations.insert(meta.name(), meta.description());
 			}
 
 			return informations;
@@ -148,13 +136,12 @@ class Factory {
 		 *	@return An instance of the product, or 0 if there is no product
 		 *		found with the given name.
 		 */
+		static Product* create(const QString& name) {
+			Factory& _this = instance();
 
-		static Product* create( const QString& name ) {
-			Factory& _this = instance( );
-
-			foreach ( const ProductMetaType& meta, _this._registry ) {
-				if ( name.compare( meta.name( )) == 0 ) {
-					return meta.create( );
+			foreach (const ProductMetaType& meta, _this._registry) {
+				if (name.compare(meta.name()) == 0) {
+					return meta.create();
 				}
 			}
 
@@ -166,8 +153,7 @@ class Factory {
 		/**
 		 *	Private constructor to prevent copy.
 		 */
-
-		Factory( ) { }
+		Factory() {}
 
 
 
@@ -176,10 +162,8 @@ class Factory {
 		 *
 		 *	@param other Other factory.
 		 */
-
-		Factory( const Factory& other ) {
-
-			Q_UNUSED( other );
+		Factory(const Factory& other) {
+			Q_UNUSED(other);
 		}
 
 
@@ -189,10 +173,8 @@ class Factory {
 		 *
 		 *	@param other Other factory.
 		 */
-
-		void operator=( const Factory& other ) {
-
-			Q_UNUSED( other );
+		void operator=(const Factory& other) {
+			Q_UNUSED(other);
 		}
 
 
@@ -202,9 +184,7 @@ class Factory {
 		 *
 		 *	@return Unique instance.
 		 */
-
-		static Factory& instance( ) {
-
+		static Factory& instance() {
 			static Factory factory;
 			return factory;
 		}
@@ -220,7 +200,6 @@ class Factory {
 /**
  *	An utility class to register products for the factory.
  */
-
 template< class Ancestor, class Product >
 class ProductRegistrar {
 
@@ -232,10 +211,8 @@ class ProductRegistrar {
 		 *	@param name Name of the product.
 		 *	@param description Description of the product.
 		 */
-
-		ProductRegistrar( const QString& name, const QString& description ) {
-
-			Factory< Ancestor >::registerProductMetaType( name, description, create );
+		ProductRegistrar(const QString& name, const QString& description) {
+			Factory< Ancestor >::registerProductMetaType(name, description, create);
 		}
 
 
@@ -245,9 +222,7 @@ class ProductRegistrar {
 		 *
 		 *	@return Product instance.
 		 */
-
-		static Ancestor* create( ) {
-
+		static Ancestor* create() {
 			return new Product;
 		}
 
@@ -258,11 +233,10 @@ class ProductRegistrar {
 /**
  *	A macro to register products easily.
  */
-
-#define REGISTER_PRODUCT( baseClassName, className, name, description ) \
-	ProductRegistrar< baseClassName, className > className##Product( \
-		QObject::tr( name ), \
-		QObject::tr( description ) \
+#define REGISTER_PRODUCT(baseClassName, className, name, description) \
+	ProductRegistrar< baseClassName, className > className##Product(\
+		QObject::tr(name), \
+		QObject::tr(description) \
 	);
 
 #endif // FACTORY_H

@@ -5,18 +5,13 @@
 /**
  *
  */
-
-Input::Input( QObject* parent ) :
-	Configurable( parent ) {
-
-}
+Input::Input(QObject* parent) :
+	Configurable(parent)
+{}
 
 
 
 /**
  *
  */
-
-Input::~Input( ) {
-
-}
+Input::~Input() {}

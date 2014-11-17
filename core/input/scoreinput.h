@@ -13,26 +13,25 @@ class QTimer;
 /**
  *	The ScoreInput class.
  */
-
 class ScoreInput : public Input {
 
 	Q_OBJECT
 
 	public:
 
-		ScoreInput( QObject* parent = 0 );
+		ScoreInput(QObject* parent = 0);
 
-		OptionList options( ) const;
-		void configure( const QVariantMap& options );
+		OptionList options() const;
+		void configure(const QVariantMap& options);
 
-		void load( const QString& fileName );
+		void load(const QString& fileName);
 
-		void play( );
-		void stop( );
+		void play();
+		void stop();
 
 	private slots:
 
-		void check( );
+		void check();
 
 	private:
 
